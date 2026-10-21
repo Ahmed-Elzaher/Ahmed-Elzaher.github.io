@@ -67,7 +67,7 @@ p { margin: 0; }
 }
 
 /* top bar */
-.top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-block: 1.25rem; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-block: 1.25rem; border-bottom: 1px solid var(--line); }
 .mark { font-family: var(--font-mono); font-weight: 500; font-size: 0.9rem; text-decoration: none; letter-spacing: 0.04em; }
 .mark span { color: var(--accent); }
 .top nav { display: flex; gap: 1.25rem; flex-wrap: wrap; font-size: 0.95rem; }
@@ -458,19 +458,20 @@ footer { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; 
   </footer>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="three.min.js"></script>
 <script>
 (function () {
   var canvas = document.getElementById('phone3d');
   var stage = document.getElementById('stage');
   var fallback = document.getElementById('stage-fallback');
   var buttons = document.querySelectorAll('[data-proj]');
-  function showFallback() {
-    if (fallback) fallback.hidden = false;
+  function showFallback(msg) {
+    if (fallback) { fallback.hidden = false; if (msg) fallback.textContent = msg; }
     if (canvas) canvas.hidden = true;
   }
   try {
-    if (!canvas || !window.THREE) { showFallback(); return; }
+    if (!canvas) { return; }
+    if (!window.THREE) { showFallback('The 3D library did not load. Check that three.min.js sits next to index.html.'); return; }
     var T = window.THREE;
     var TAU = Math.PI * 2;
     var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -720,7 +721,7 @@ footer { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; 
       new IntersectionObserver(function (en) { en[0].isIntersecting ? start() : stop(); }, { threshold: 0.05 }).observe(stage);
     } else { start(); }
   } catch (err) {
-    showFallback();
+    showFallback('The 3D phone could not start in this browser: ' + (err && err.message ? err.message : 'unknown error'));
     if (window.console) console.error(err);
   }
 })();
