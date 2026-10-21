@@ -7,13 +7,13 @@
 <meta name="description" content="Portfolio of Ahmed Elzaher, Mobile Application Developer specializing in Flutter, Dart, Clean Architecture, and BLoC.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #080c14;
-  --surface: #0e1522;
-  --surface-card: #131c2d;
-  --surface-hover: #19253c;
+  --bg: #070b12;
+  --surface: #0d1420;
+  --surface-card: #121b2b;
+  --surface-hover: #18253b;
   --line: rgba(255, 255, 255, 0.08);
   --line-strong: rgba(255, 255, 255, 0.16);
   --fg: #f1f5f9;
@@ -23,9 +23,10 @@
   --accent-glow: rgba(56, 189, 248, 0.25);
   --accent-ink: #031525;
   --green: #22c55e;
-  --green-glow: rgba(34, 197, 94, 0.3);
+  --green-glow: rgba(34, 197, 94, 0.35);
   --font-main: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sig: "Caveat", cursive, sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,25 +41,96 @@ body {
   padding-bottom: 5rem;
   overflow-x: hidden;
   background-image: 
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.12), transparent),
-    radial-gradient(circle at 100% 40%, rgba(14, 165, 233, 0.05), transparent 40%);
+    radial-gradient(ellipse 70% 40% at 50% -10%, rgba(56, 189, 248, 0.12), transparent),
+    radial-gradient(circle at 90% 30%, rgba(14, 165, 233, 0.04), transparent 40%);
 }
 
 .wrap {
-  max-width: 960px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 1.5rem 1.25rem;
+  padding: 1.5rem 1.5rem;
 }
 
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; border: none; cursor: pointer; background: none; }
+
+/* ==================== Signature Preloader ==================== */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #06090f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.sig-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sig-svg {
+  width: 280px;
+  height: 110px;
+  overflow: visible;
+}
+
+.sig-text {
+  font-family: var(--font-sig);
+  font-size: 78px;
+  font-weight: 700;
+  fill: transparent;
+  stroke: var(--accent);
+  stroke-width: 2.2px;
+  stroke-dasharray: 550;
+  stroke-dashoffset: 550;
+  animation: drawSignature 1.4s cubic-bezier(0.65, 0, 0.35, 1) forwards, fillSignature 0.4s ease 1.2s forwards;
+  filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.7));
+}
+
+@keyframes drawSignature {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes fillSignature {
+  to {
+    fill: #ffffff;
+    stroke: #ffffff;
+    filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.4));
+  }
+}
+
+.sig-sub {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0;
+  animation: fadeInSub 0.6s ease 0.9s forwards;
+}
+
+@keyframes fadeInSub {
+  to { opacity: 0.8; }
+}
 
 /* ==================== Top Nav / Bar ==================== */
 .top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: 1rem 2rem;
+  padding-block: 1rem 1.75rem;
   border-bottom: 1px solid var(--line);
   margin-bottom: 2.5rem;
   gap: 1rem;
@@ -66,23 +138,31 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
 
 .brand {
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  align-items: baseline;
+  gap: 0.35rem;
+  font-family: var(--font-main);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  transition: color .2s;
+}
+
+.brand:hover {
+  color: var(--accent);
+}
+
+.brand-title {
   font-family: var(--font-mono);
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-left: 0.4rem;
+  padding: 0.15rem 0.5rem;
+  background: rgba(56, 189, 248, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
 }
-
-.brand-dot {
-  width: 9px;
-  height: 9px;
-  background: var(--accent);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--accent);
-}
-
-.brand span { color: var(--accent); }
 
 .top-actions {
   display: flex;
@@ -94,8 +174,8 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   border-radius: 12px;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -110,13 +190,13 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   color: var(--accent);
 }
 
-.icon-btn svg { width: 19px; height: 19px; fill: currentColor; }
+.icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
 
 .cv-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.6rem 1.1rem;
+  padding: 0.55rem 1.1rem;
   border-radius: 12px;
   background: var(--surface-card);
   border: 1px solid var(--line);
@@ -130,94 +210,47 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   background: var(--accent);
   color: var(--accent-ink);
   border-color: var(--accent);
-  box-shadow: 0 4px 20px var(--accent-glow);
+  box-shadow: 0 4px 18px var(--accent-glow);
   transform: translateY(-2px);
 }
 
 .cv-btn svg { width: 16px; height: 16px; }
 
-/* ==================== Hero Section ==================== */
+/* ==================== Hero Section (2-Column Grid) ==================== */
 .hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 3.5rem;
+}
+
+.hero-left {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  margin-bottom: 4rem;
+  gap: 1.25rem;
 }
 
-.hero-profile {
-  display: flex;
+.hero-label {
+  display: inline-flex;
   align-items: center;
-  gap: 1.75rem;
-  flex-wrap: wrap;
-}
-
-.avatar-wrap {
-  position: relative;
-  width: 140px;
-  height: 140px;
-  border-radius: 28px;
-  overflow: visible;
-  flex-shrink: 0;
-}
-
-.avatar-frame {
-  width: 100%;
-  height: 100%;
-  border-radius: 28px;
-  overflow: hidden;
-  border: 2px solid var(--line-strong);
-  background: var(--surface-card);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 25px rgba(56, 189, 248, 0.15);
-  position: relative;
-}
-
-.avatar-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 15%; /* perfectly frames face and hair */
-  display: block;
-}
-
-.avatar-badge {
-  position: absolute;
-  bottom: -8px;
-  right: -8px;
-  background: var(--bg);
-  border: 1px solid var(--line-strong);
-  padding: 0.25rem 0.65rem;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.72rem;
-  font-weight: 600;
+  gap: 0.5rem;
   font-family: var(--font-mono);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-}
-
-.pulse-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 8px var(--green);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
 .hero-title {
   display: flex;
   flex-direction: column;
-  margin-block: 0.5rem;
+  margin-block: -0.25rem;
 }
 
 .hero-title .solid {
-  font-size: clamp(2.75rem, 8vw, 4.75rem);
+  font-size: clamp(2.75rem, 6.5vw, 4.25rem);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.03em;
@@ -226,14 +259,14 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
 }
 
 .hero-title .outline {
-  font-size: clamp(2.75rem, 8vw, 4.75rem);
+  font-size: clamp(2.75rem, 6.5vw, 4.25rem);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.03em;
   color: transparent;
   -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.35);
   text-transform: uppercase;
-  margin-top: 0.15rem;
+  margin-top: 0.2rem;
   transition: -webkit-text-stroke .3s;
 }
 
@@ -242,10 +275,9 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
 }
 
 .hero-bio {
-  font-size: 1.125rem;
-  line-height: 1.75;
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: var(--muted);
-  max-width: 48rem;
 }
 
 .hero-bio strong {
@@ -253,22 +285,22 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   font-weight: 600;
 }
 
-/* ==================== Stats Grid ==================== */
+/* Stats Row */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
 }
 
 .stat-card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 1.25rem 1.4rem;
+  border-radius: 16px;
+  padding: 1rem 1.15rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.25rem;
   transition: all .2s;
 }
 
@@ -279,11 +311,10 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
 }
 
 .stat-val {
-  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: #ffffff;
-  font-family: var(--font-main);
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -295,28 +326,101 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
 
 .stat-lbl {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   line-height: 1.3;
 }
 
-/* ==================== Feature / Specialty Cards ==================== */
+/* Hero Right: Portrait Photo */
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.portrait-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+}
+
+.portrait-card {
+  width: 100%;
+  aspect-ratio: 1 / 1.08;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 2px solid var(--line-strong);
+  background: var(--surface-card);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.15);
+  position: relative;
+  transition: all .3s ease;
+}
+
+.portrait-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 40px var(--accent-glow);
+  transform: translateY(-4px);
+}
+
+.portrait-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+}
+
+.portrait-badge {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  white-space: nowrap;
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 10px var(--green);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+/* Specialty Cards */
 .feature-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
-  margin-top: 0.5rem;
+  margin-top: 2rem;
 }
 
 .feature-card {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 20px;
-  padding: 1.6rem;
+  padding: 1.5rem;
   display: flex;
-  gap: 1.2rem;
+  gap: 1.15rem;
   align-items: flex-start;
   transition: all .25s ease;
 }
@@ -329,9 +433,9 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
 }
 
 .feature-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   background: var(--surface-card);
   border: 1px solid var(--line-strong);
   display: flex;
@@ -341,26 +445,26 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   color: var(--accent);
 }
 
-.feature-icon svg { width: 24px; height: 24px; }
+.feature-icon svg { width: 22px; height: 22px; }
 
 .feature-info h3 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.3rem;
 }
 
 .feature-info p {
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.55;
 }
 
 /* ==================== Section Common ==================== */
 .section {
-  padding-top: 4.5rem;
+  padding-top: 4rem;
   border-top: 1px solid var(--line);
-  margin-top: 4.5rem;
+  margin-top: 4rem;
 }
 
 .section-head {
@@ -373,7 +477,7 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
 }
 
 .sec-title .solid {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 2.75rem);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.03em;
@@ -382,7 +486,7 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
 }
 
 .sec-title .outline {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 2.75rem);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.03em;
@@ -403,7 +507,7 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
 .pill {
   padding: 0.55rem 1.15rem;
   border-radius: 999px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   font-family: var(--font-mono);
   letter-spacing: 0.04em;
@@ -436,12 +540,12 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 18px;
-  padding: 1.75rem 1rem;
+  padding: 1.6rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.85rem;
+  gap: 0.75rem;
   text-align: center;
   aspect-ratio: 1 / 1;
   transition: all .25s ease;
@@ -461,8 +565,8 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
 }
 
 .arsenal-icon {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -488,7 +592,52 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   color: var(--dim);
 }
 
-/* ==================== Projects Section ==================== */
+/* ==================== Dart Code Snippet Card ==================== */
+.dart-box {
+  background: #090e18;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  margin-top: 2rem;
+}
+
+.dart-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--line);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.dart-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dart-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.dart-code {
+  padding: 1.25rem;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  overflow-x: auto;
+  color: #cbd5e1;
+}
+
+.k { color: #38bdf8; font-weight: 600; }
+.s { color: #67e8f9; }
+.c { color: #64748b; font-style: italic; }
+
+/* ==================== Projects Section (Realistic 3D Phone Frames) ==================== */
 .project-card {
   background: var(--surface);
   border: 1px solid var(--line);
@@ -497,7 +646,7 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 2.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   transition: all .25s ease;
 }
 
@@ -630,177 +779,184 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   box-shadow: 0 4px 15px var(--accent-glow);
 }
 
-/* Phone Mockup Mock visual */
-.project-phones {
+/* ==================== Realistic 3D Phone Frames ==================== */
+.project-phones-3d {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
   align-items: center;
+  perspective: 1000px;
 }
 
-.phone-mock {
-  background: var(--bg);
-  border: 1.5px solid var(--line-strong);
-  border-radius: 22px;
-  aspect-ratio: 9 / 18.5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 0.5rem;
+.phone-device {
+  background: #0f1624;
+  border-radius: 24px;
+  padding: 6px;
+  border: 2px solid #233148;
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-  transition: transform .25s;
-}
-
-.phone-mock:hover {
-  transform: translateY(-4px) scale(1.02);
-  border-color: var(--accent);
-}
-
-.phone-notch {
-  position: absolute;
-  top: 6px;
-  width: 32%;
-  height: 4px;
-  border-radius: 3px;
-  background: var(--line-strong);
-}
-
-.phone-content {
+  aspect-ratio: 9 / 18.8;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  text-align: center;
+  transition: transform .3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow .3s;
 }
 
-.phone-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  background: var(--surface-card);
-  border: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
+.phone-device:hover {
+  transform: translateY(-8px) scale(1.04) rotateX(4deg);
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 25px var(--accent-glow);
 }
 
-.phone-content span {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 600;
-  color: var(--muted);
-  line-height: 1.3;
-}
-
-/* ==================== Dart Code Snippet Card ==================== */
-.dart-box {
-  background: #090e18;
-  border: 1px solid var(--line);
+.phone-screen {
+  flex: 1;
+  background: #090e17;
   border-radius: 18px;
   overflow: hidden;
-  font-family: var(--font-mono);
-  margin-top: 2rem;
-}
-
-.dart-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 1.25rem;
-  background: rgba(255, 255, 255, 0.02);
-  border-bottom: 1px solid var(--line);
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-
-.dart-dots {
-  display: flex;
-  gap: 6px;
-}
-
-.dart-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.dart-code {
-  padding: 1.25rem;
-  font-size: 0.85rem;
-  line-height: 1.7;
-  overflow-x: auto;
-  color: #cbd5e1;
-}
-
-.k { color: #38bdf8; font-weight: 600; }
-.s { color: #67e8f9; }
-.c { color: #64748b; font-style: italic; }
-
-/* ==================== Contact Section ==================== */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: center;
-}
-
-.contact-channels {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 0.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.contact-row {
+.phone-notch-bar {
+  position: absolute;
+  top: 5px;
+  width: 34%;
+  height: 5px;
+  border-radius: 4px;
+  background: #1e293b;
+  z-index: 2;
+}
+
+.phone-inner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  text-align: center;
+  z-index: 1;
+}
+
+.phone-ui-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.phone-ui-icon svg { width: 18px; height: 18px; }
+
+.phone-screen-caption {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  line-height: 1.35;
+}
+
+.phone-device-footer {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--dim);
+  text-align: center;
+  margin-top: 0.35rem;
+}
+
+/* ==================== Redesigned Contact CTA Section ==================== */
+.contact-cta-card {
+  background: linear-gradient(135deg, rgba(14, 21, 34, 0.95), rgba(9, 14, 24, 0.95));
+  border: 1px solid var(--line-strong);
+  border-radius: 28px;
+  padding: 3rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.contact-cta-card::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.cta-left h2 {
+  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+
+.cta-left h2 span {
+  color: var(--accent);
+}
+
+.cta-left p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 30rem;
+}
+
+.cta-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.email-box {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--surface);
-  border: 1px solid var(--line);
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
   border-radius: 16px;
-  padding: 1.1rem 1.4rem;
-  transition: all .2s;
+  padding: 0.9rem 1.25rem;
+  gap: 0.75rem;
 }
 
-.contact-row:hover {
-  background: var(--surface-card);
-  border-color: var(--line-strong);
-}
-
-.contact-details span {
-  display: block;
+.email-val {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  margin-bottom: 0.15rem;
-}
-
-.contact-details a {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #ffffff;
-}
-
-.contact-details a:hover {
-  color: var(--accent);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .copy-btn {
-  padding: 0.4rem 0.85rem;
-  border-radius: 8px;
+  padding: 0.45rem 0.95rem;
+  border-radius: 10px;
   background: var(--surface-card);
   border: 1px solid var(--line);
   color: var(--fg);
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 600;
-  transition: all .15s;
+  transition: all .2s;
+  flex-shrink: 0;
 }
 
 .copy-btn:hover {
@@ -808,9 +964,30 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   color: var(--accent);
 }
 
+.cta-send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  border-radius: 16px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 4px 20px var(--accent-glow);
+  transition: all .2s ease;
+}
+
+.cta-send-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--accent-glow);
+}
+
 /* ==================== Footer ==================== */
 footer {
-  margin-top: 5rem;
+  margin-top: 4.5rem;
   padding-top: 2rem;
   border-top: 1px solid var(--line);
   display: flex;
@@ -823,14 +1000,15 @@ footer {
   gap: 1rem;
 }
 
-/* ==================== Responsive ==================== */
+/* ==================== Responsive Design ==================== */
 @media (max-width: 860px) {
-  .hero-profile { flex-direction: column; align-items: flex-start; }
+  .hero { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-right { order: -1; }
   .stats-grid { grid-template-columns: 1fr; }
   .feature-cards { grid-template-columns: 1fr; }
   .arsenal-grid { grid-template-columns: repeat(3, 1fr); }
   .project-card { grid-template-columns: 1fr; }
-  .contact-grid { grid-template-columns: 1fr; }
+  .contact-cta-card { grid-template-columns: 1fr; gap: 2rem; }
 }
 
 @media (max-width: 540px) {
@@ -841,13 +1019,23 @@ footer {
 </head>
 <body>
 
+<!-- ==================== Signature Splash / Preloader ==================== -->
+<div id="preloader" class="preloader">
+  <div class="sig-container">
+    <svg class="sig-svg" viewBox="0 0 320 120">
+      <text x="50%" y="68%" text-anchor="middle" class="sig-text">Ahmed</text>
+    </svg>
+    <span class="sig-sub">Ahmed Elzaher · Mobile Developer</span>
+  </div>
+</div>
+
 <div class="wrap">
 
   <!-- ==================== Top Navigation Bar ==================== -->
   <header class="top-bar">
     <a class="brand" href="#">
-      <span class="brand-dot"></span>
-      ahmed<span>.</span>elzaher
+      Ahmed Elzaher
+      <span class="brand-title">Flutter Dev</span>
     </a>
 
     <div class="top-actions">
@@ -869,70 +1057,75 @@ footer {
     </div>
   </header>
 
-  <!-- ==================== Hero Section ==================== -->
+  <!-- ==================== Harmonious 2-Column Hero ==================== -->
   <main>
     <div class="hero">
-      <div class="hero-profile">
-        <div class="avatar-wrap">
-          <div class="avatar-frame">
-            <img src="photo.jpg" alt="Ahmed Elzaher Portrait" width="280" height="280">
+      <div class="hero-left">
+        <div class="hero-label">
+          <span>FLUTTER</span> · <span>CLEAN ARCHITECTURE</span> · <span>MOBILE</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="solid">FLUTTER</span>
+          <span class="outline">DEVELOPER</span>
+        </h1>
+
+        <p class="hero-bio">
+          My name is <strong>Ahmed Elzaher</strong>, a <strong>Mobile Application Developer</strong> specializing in crafting high-performance, cross-platform apps with <strong>Flutter & Dart</strong>. Experienced in designing production-ready systems using <strong>Clean Architecture</strong>, maintainable <strong>BLoC / Cubit</strong> state management, and reliable <strong>RESTful APIs</strong>. Graduating in <strong>Communication & Computer Engineering</strong> from <strong>Mansoura University (June 2026 · Very Good)</strong>.
+        </p>
+
+        <!-- Key Stats Row -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-val">5+</div>
+            <div class="stat-lbl">Projects Delivered</div>
           </div>
-          <div class="avatar-badge">
+          <div class="stat-card">
+            <div class="stat-val">CCE '26</div>
+            <div class="stat-lbl">Mansoura University</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val status">
+              <span class="pulse-dot" style="margin-right: 4px;"></span> OPEN
+            </div>
+            <div class="stat-lbl">Available For Hire</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Balanced Portrait Photo -->
+      <div class="hero-right">
+        <div class="portrait-wrapper">
+          <div class="portrait-card">
+            <img src="photo.jpg" alt="Ahmed Elzaher Portrait" width="340" height="360">
+          </div>
+          <div class="portrait-badge">
             <span class="pulse-dot"></span>
-            <span>Available</span>
+            <span>Available For Opportunities</span>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div style="flex: 1; min-width: 280px;">
-          <h1 class="hero-title">
-            <span class="solid">FLUTTER</span>
-            <span class="outline">DEVELOPER</span>
-          </h1>
+    <!-- Specialty Feature Cards -->
+    <div class="feature-cards">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </div>
+        <div class="feature-info">
+          <h3>Cross-Platform Mobile Engineer</h3>
+          <p>From pixel-perfect UI implementation to smooth 60fps animations, delivering unified iOS & Android experiences.</p>
         </div>
       </div>
 
-      <p class="hero-bio">
-        My name is <strong>Ahmed Elzaher</strong>, a <strong>Mobile Application Developer</strong> specializing in crafting high-performance, cross-platform apps with <strong>Flutter & Dart</strong>. Experienced in designing production-ready systems using <strong>Clean Architecture</strong>, maintainable <strong>BLoC / Cubit</strong> state management, and reliable <strong>RESTful APIs</strong>. Graduating in <strong>Communication & Computer Engineering</strong> from <strong>Mansoura University (June 2026 · Very Good)</strong>.
-      </p>
-
-      <!-- Key Stats Row -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-val">5+</div>
-          <div class="stat-lbl">Projects Delivered</div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
         </div>
-        <div class="stat-card">
-          <div class="stat-val">CCE '26</div>
-          <div class="stat-lbl">Mansoura University</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-val status">
-            <span class="pulse-dot" style="margin-right: 4px;"></span> OPEN
-          </div>
-          <div class="stat-lbl">Available For Hire</div>
-        </div>
-      </div>
-
-      <!-- Specialty Feature Cards -->
-      <div class="feature-cards">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-          </div>
-          <div class="feature-info">
-            <h3>Cross-Platform Mobile Engineer</h3>
-            <p>From pixel-perfect UI implementation to smooth 60fps animations, delivering unified iOS & Android experiences.</p>
-          </div>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-          </div>
-          <div class="feature-info">
-            <h3>Clean Architecture & Scalability</h3>
-            <p>Strict decoupling between Presentation, Domain, and Data layers with SOLID principles and Dependency Injection.</p>
-          </div>
+        <div class="feature-info">
+          <h3>Clean Architecture & Scalability</h3>
+          <p>Strict decoupling between Presentation, Domain, and Data layers with SOLID principles and Dependency Injection.</p>
         </div>
       </div>
     </div>
@@ -1127,7 +1320,7 @@ footer {
       </div>
     </section>
 
-    <!-- ==================== Featured Projects ==================== -->
+    <!-- ==================== Featured Projects (Realistic 3D Phone Frames) ==================== -->
     <section class="section" id="projects">
       <div class="section-head">
         <h2 class="sec-title">
@@ -1169,33 +1362,44 @@ footer {
           </div>
         </div>
 
-        <div class="project-phones">
-          <div class="phone-mock">
-            <div class="phone-notch"></div>
-            <div class="phone-content">
-              <div class="phone-icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/></svg>
+        <div class="project-phones-3d">
+          <div class="phone-device">
+            <div class="phone-screen">
+              <div class="phone-notch-bar"></div>
+              <div class="phone-inner-content">
+                <div class="phone-ui-icon">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/></svg>
+                </div>
+                <span class="phone-screen-caption">Auth<br>& Login</span>
               </div>
-              <span>Auth<br>& Login</span>
             </div>
+            <div class="phone-device-footer">Screen 01</div>
           </div>
-          <div class="phone-mock">
-            <div class="phone-notch"></div>
-            <div class="phone-content">
-              <div class="phone-icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+
+          <div class="phone-device">
+            <div class="phone-screen">
+              <div class="phone-notch-bar"></div>
+              <div class="phone-inner-content">
+                <div class="phone-ui-icon">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+                <span class="phone-screen-caption">Job<br>Matching</span>
               </div>
-              <span>Job<br>Matching</span>
             </div>
+            <div class="phone-device-footer">Screen 02</div>
           </div>
-          <div class="phone-mock">
-            <div class="phone-notch"></div>
-            <div class="phone-content">
-              <div class="phone-icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+
+          <div class="phone-device">
+            <div class="phone-screen">
+              <div class="phone-notch-bar"></div>
+              <div class="phone-inner-content">
+                <div class="phone-ui-icon">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                </div>
+                <span class="phone-screen-caption">Saved<br>Jobs</span>
               </div>
-              <span>Saved<br>Jobs</span>
             </div>
+            <div class="phone-device-footer">Screen 03</div>
           </div>
         </div>
       </article>
@@ -1234,75 +1438,69 @@ footer {
           </div>
         </div>
 
-        <div class="project-phones">
-          <div class="phone-mock">
-            <div class="phone-notch"></div>
-            <div class="phone-content">
-              <div class="phone-icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <div class="project-phones-3d">
+          <div class="phone-device">
+            <div class="phone-screen">
+              <div class="phone-notch-bar"></div>
+              <div class="phone-inner-content">
+                <div class="phone-ui-icon">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                </div>
+                <span class="phone-screen-caption">Courses<br>Hub</span>
               </div>
-              <span>Courses<br>Hub</span>
             </div>
+            <div class="phone-device-footer">Screen 01</div>
           </div>
-          <div class="phone-mock">
-            <div class="phone-notch"></div>
-            <div class="phone-content">
-              <div class="phone-icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+
+          <div class="phone-device">
+            <div class="phone-screen">
+              <div class="phone-notch-bar"></div>
+              <div class="phone-inner-content">
+                <div class="phone-ui-icon">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                </div>
+                <span class="phone-screen-caption">PDF<br>Viewer</span>
               </div>
-              <span>PDF<br>Viewer</span>
             </div>
+            <div class="phone-device-footer">Screen 02</div>
           </div>
-          <div class="phone-mock">
-            <div class="phone-notch"></div>
-            <div class="phone-content">
-              <div class="phone-icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+
+          <div class="phone-device">
+            <div class="phone-screen">
+              <div class="phone-notch-bar"></div>
+              <div class="phone-inner-content">
+                <div class="phone-ui-icon">
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                </div>
+                <span class="phone-screen-caption">Study<br>Progress</span>
               </div>
-              <span>Study<br>Progress</span>
             </div>
+            <div class="phone-device-footer">Screen 03</div>
           </div>
         </div>
       </article>
     </section>
 
-    <!-- ==================== Contact Section ==================== -->
+    <!-- ==================== Redesigned Contact Section (CTA Card) ==================== -->
     <section class="section" id="contact">
-      <div class="contact-grid">
-        <div>
-          <h2 class="sec-title">
-            <span class="solid">LET'S BUILD</span>
-            <span class="outline">SOMETHING</span>
-          </h2>
-          <p style="color: var(--muted); margin-top: 1rem; max-width: 26rem; font-size: 1.05rem;">
-            I am currently open to full-time Flutter roles, internships, and freelance projects. Let's discuss how I can bring value to your engineering team.
+      <div class="contact-cta-card">
+        <div class="cta-left">
+          <h2>Have a project in mind?<br>Let's <span>build it</span>.</h2>
+          <p>
+            I am currently open to full-time Flutter roles, mobile development opportunities, and collaborations. Let's discuss how I can bring clean engineering to your product.
           </p>
         </div>
 
-        <div class="contact-channels">
-          <div class="contact-row">
-            <div class="contact-details">
-              <span>Direct Email</span>
-              <a href="mailto:zaskizaski13@gmail.com" id="emailVal">zaskizaski13@gmail.com</a>
-            </div>
+        <div class="cta-right">
+          <div class="email-box">
+            <div class="email-val" id="emailVal">zaskizaski13@gmail.com</div>
             <button class="copy-btn" id="copyBtn" type="button">Copy</button>
           </div>
 
-          <div class="contact-row">
-            <div class="contact-details">
-              <span>LinkedIn</span>
-              <a href="https://www.linkedin.com/in/ahmed-elzaher13/" target="_blank" rel="noopener">in/ahmed-elzaher13</a>
-            </div>
-            <span style="color: var(--accent); font-family: var(--font-mono);">↗</span>
-          </div>
-
-          <div class="contact-row">
-            <div class="contact-details">
-              <span>GitHub</span>
-              <a href="https://github.com/Ahmed-Elzaher" target="_blank" rel="noopener">@Ahmed-Elzaher</a>
-            </div>
-            <span style="color: var(--accent); font-family: var(--font-mono);">↗</span>
-          </div>
+          <a href="mailto:zaskizaski13@gmail.com" class="cta-send-btn">
+            <span>Send Direct Message</span>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
       </div>
     </section>
@@ -1318,6 +1516,27 @@ footer {
 
 <!-- ==================== Interactive Scripts ==================== -->
 <script>
+// Preloader Signature Dismiss
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    var preloader = document.getElementById('preloader');
+    if (preloader) {
+      preloader.classList.add('fade-out');
+      setTimeout(function() {
+        preloader.style.display = 'none';
+      }, 500);
+    }
+  }, 1600);
+});
+
+// Fallback in case load takes longer
+setTimeout(function() {
+  var preloader = document.getElementById('preloader');
+  if (preloader && !preloader.classList.contains('fade-out')) {
+    preloader.classList.add('fade-out');
+  }
+}, 2500);
+
 // Filter Pills logic for Technical Arsenal
 document.querySelectorAll('.filter-pills .pill').forEach(function(pill) {
   pill.addEventListener('click', function() {
