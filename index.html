@@ -7,6 +7,14 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
+<meta name="description" content="Ahmed Elzaher is a Flutter developer building high-performance, cross-platform mobile apps with Flutter and Dart. See his projects MatchIn and Engipedia.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ahmed Elzaher | Flutter Developer">
+<meta property="og:description" content="Cross-platform mobile apps with Flutter and Dart, built on clean, scalable architecture.">
+<meta property="og:url" content="https://ahmed-elzaher.github.io/">
+<meta property="og:image" content="https://ahmed-elzaher.github.io/photo.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0a1018">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -164,6 +172,40 @@ section { padding-block: 4.5rem; border-top: 1px solid var(--line); scroll-margi
 .phone .screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .phone figcaption { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.04em; text-align: center; }
 
+[hidden] { display: none !important; }
+.top-right { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.btn.small { padding: 0.45rem 0.9rem; font-size: 0.85rem; border-radius: 8px; }
+.status { display: inline-flex; align-items: center; gap: 0.55rem; align-self: flex-start; padding: 0.35rem 0.8rem; border: 1px solid var(--line); border-radius: 999px; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; color: var(--fg); background: var(--surface); }
+.status i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent); }
+.timeline { display: grid; border-top: 1px solid var(--line); }
+.t-row { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--line); }
+.t-row .when { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.06em; color: var(--muted); padding-top: 0.35rem; }
+.t-row h3 { font-size: 1.4rem; font-weight: 600; }
+.t-row .where { color: var(--accent); font-size: 0.95rem; margin-top: 0.2rem; }
+.t-row .what { color: var(--muted); margin-top: 0.6rem; max-width: 40rem; }
+
+/* loading screen */
+html.loading { overflow: hidden; }
+.loader { position: fixed; inset: 0; z-index: 1000; background: var(--bg); display: grid; place-items: center; padding: 1rem; transition: opacity .55s ease, visibility .55s; animation: loader-failsafe .01s linear 6s forwards; }
+.loader.done { opacity: 0; visibility: hidden; }
+@keyframes loader-failsafe { to { opacity: 0; visibility: hidden; } }
+.loader-inner { display: flex; flex-direction: column; align-items: center; }
+.loader-name { display: flex; overflow: hidden; padding: 0 0.04em 0.12em; font-family: var(--font-display); font-weight: 700; font-size: clamp(3.75rem, 17vw, 9rem); line-height: 1.05; letter-spacing: -0.03em; }
+.loader-name span { display: inline-block; transform: translateY(115%); animation: loader-rise .75s cubic-bezier(.2,.8,.2,1) forwards; animation-delay: calc(var(--i) * 75ms + 150ms); }
+.loader-name .dot { color: var(--accent); }
+@keyframes loader-rise { to { transform: translateY(0); } }
+.loader-role { margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); opacity: 0; animation: loader-fade .6s ease 0.9s forwards; }
+@keyframes loader-fade { to { opacity: 1; } }
+.loader-bar { width: min(240px, 60vw); height: 2px; margin-top: 1.75rem; background: var(--line); overflow: hidden; }
+.loader-bar i { display: block; height: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; animation: loader-fill 1.5s cubic-bezier(.6,0,.3,1) .2s forwards; }
+@keyframes loader-fill { to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .loader { transition: none; }
+  .loader-name span { transform: none; animation: none; }
+  .loader-role { opacity: 1; animation: none; }
+  .loader-bar i { transform: none; animation: none; }
+}
+
 /* 3D phone */
 .showcase { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; align-items: center; margin-bottom: 5rem; padding-bottom: 4rem; border-bottom: 1px solid var(--line); }
 .stage { position: relative; height: clamp(400px, 46vw, 580px); border-radius: 24px; cursor: grab; background: radial-gradient(closest-side at 50% 52%, var(--surface), transparent 92%); }
@@ -204,6 +246,7 @@ footer { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; 
   section { padding-block: 3.5rem; }
   .project + .project { margin-top: 3.5rem; padding-top: 3rem; }
   .layer { grid-template-columns: minmax(0, 1fr); gap: 0.9rem; }
+  .t-row { grid-template-columns: minmax(0, 1fr); gap: 0.4rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -215,20 +258,58 @@ footer { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; 
 <body>
 
 
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <div class="loader-name"><span style="--i:0">A</span><span style="--i:1">h</span><span style="--i:2">m</span><span style="--i:3">e</span><span style="--i:4">d</span><span class="dot" style="--i:5">.</span></div>
+    <div class="loader-role">Flutter Developer</div>
+    <div class="loader-bar"><i></i></div>
+  </div>
+</div>
+<script>
+(function () {
+  var l = document.getElementById('loader');
+  if (!l) return;
+  var root = document.documentElement;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var MIN = reduce ? 500 : 1700, start = performance.now(), finished = false;
+  root.classList.add('loading');
+  function finish() {
+    if (finished) return; finished = true;
+    l.classList.add('done'); root.classList.remove('loading');
+    setTimeout(function () { if (l.parentNode) l.parentNode.removeChild(l); }, 800);
+  }
+  function whenReady() {
+    var wait = Math.max(0, MIN - (performance.now() - start));
+    setTimeout(finish, wait);
+  }
+  var loaded = new Promise(function (res) {
+    if (document.readyState === 'complete') res(); else window.addEventListener('load', res);
+  });
+  var fonts = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+  Promise.all([loaded, fonts]).then(whenReady, whenReady);
+  setTimeout(finish, 5500);
+})();
+</script>
+
 <div class="wrap">
   <header class="top">
     <a class="mark" href="#top">ahmed<span>.</span>elzaher</a>
-    <nav aria-label="Sections">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="top-right">
+      <nav aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#experience" id="nav-experience" hidden>Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn small" id="cv-top" href="#" download hidden>Download CV</a>
+    </div>
   </header>
 
   <main id="top">
     <div class="hero">
       <div class="hero-text">
+        <span class="status" id="status" hidden><i></i><span id="status-text"></span></span>
         <span class="label">Flutter · Dart · Mobile</span>
         <h1>Ahmed Elzaher</h1>
         <p class="role">Flutter Developer</p>
@@ -237,6 +318,7 @@ footer { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; 
           <a class="btn primary" href="#projects">See my projects</a>
           <a class="btn" href="https://github.com/Ahmed-Elzaher" target="_blank" rel="noopener">GitHub</a>
           <a class="btn" href="https://www.linkedin.com/in/ahmed-elzaher13/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" id="cv-hero" href="#" download hidden>Download CV</a>
         </div>
       </div>
       <div class="portrait">
@@ -275,6 +357,14 @@ footer { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; 
 }</pre>
         </div>
       </div>
+    </section>
+
+    <section id="experience" hidden>
+      <div class="sec-head">
+        <span class="label">Experience</span>
+        <h2>Where I have worked.</h2>
+      </div>
+      <div class="timeline" id="timeline"></div>
     </section>
 
     <section id="skills">
@@ -379,9 +469,9 @@ footer { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; 
         </div>
         <div class="phones">
           <!-- To show a real screenshot, add <img src="..." alt="..."> inside the .screen div. -->
-          <figure class="phone"><div class="screen"><span>Screenshot<br>coming soon</span></div><figcaption>Sign in</figcaption></figure>
-          <figure class="phone"><div class="screen"><span>Screenshot<br>coming soon</span></div><figcaption>Sign up</figcaption></figure>
-          <figure class="phone"><div class="screen"><span>Screenshot<br>coming soon</span></div><figcaption>Saved jobs</figcaption></figure>
+          <figure class="phone" data-shot="matchin-0"><div class="screen"><span>Screenshot<br>coming soon</span></div><figcaption>Sign in</figcaption></figure>
+          <figure class="phone" data-shot="matchin-1"><div class="screen"><span>Screenshot<br>coming soon</span></div><figcaption>Sign up</figcaption></figure>
+          <figure class="phone" data-shot="matchin-2"><div class="screen"><span>Screenshot<br>coming soon</span></div><figcaption>Saved jobs</figcaption></figure>
         </div>
       </article>
 
@@ -411,9 +501,9 @@ footer { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; 
           </div>
         </div>
         <div class="phones">
-          <figure class="phone"><div class="screen"><span>Screenshot<br>coming soon</span></div><figcaption>Home hub</figcaption></figure>
-          <figure class="phone"><div class="screen"><span>Screenshot<br>coming soon</span></div><figcaption>Courses</figcaption></figure>
-          <figure class="phone"><div class="screen"><span>Screenshot<br>coming soon</span></div><figcaption>Progress</figcaption></figure>
+          <figure class="phone" data-shot="engipedia-0"><div class="screen"><span>Screenshot<br>coming soon</span></div><figcaption>Home hub</figcaption></figure>
+          <figure class="phone" data-shot="engipedia-1"><div class="screen"><span>Screenshot<br>coming soon</span></div><figcaption>Courses</figcaption></figure>
+          <figure class="phone" data-shot="engipedia-2"><div class="screen"><span>Screenshot<br>coming soon</span></div><figcaption>Progress</figcaption></figure>
         </div>
       </article>
     </section>
@@ -458,7 +548,7 @@ footer { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; 
   </footer>
 </div>
 
-<script src="three.min.js"></script>
+<script src="config.js"></script>
 <script>
 (function () {
   var canvas = document.getElementById('phone3d');
@@ -469,8 +559,16 @@ footer { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; 
     if (fallback) { fallback.hidden = false; if (msg) fallback.textContent = msg; }
     if (canvas) canvas.hidden = true;
   }
+  function load(cb) {
+    if (window.THREE) { cb(); return; }
+    var s = document.createElement('script');
+    s.src = 'three.min.js';
+    s.onload = cb;
+    s.onerror = function () { showFallback('The 3D library did not load. Check that three.min.js sits next to index.html.'); };
+    document.head.appendChild(s);
+  }
+  function boot() {
   try {
-    if (!canvas) { return; }
     if (!window.THREE) { showFallback('The 3D library did not load. Check that three.min.js sits next to index.html.'); return; }
     var T = window.THREE;
     var TAU = Math.PI * 2;
@@ -574,6 +672,7 @@ footer { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; 
       engipedia: { kind: 'Mobile app', name: 'Engipedia', tag: 'Digital learning hub for CCE students.', stack: ['Flutter', 'Dart', 'MVVM'], role: 'Lead Mobile App Developer' }
     };
     var current = 'matchin';
+    var phoneImgs = {};
     function rr(x, y, w, h, r) {
       g.beginPath(); g.moveTo(x + r, y);
       g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r);
@@ -589,6 +688,16 @@ footer { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; 
       g.fillText(line, x, y);
     }
     function drawScreen(k) {
+      var im = phoneImgs[k];
+      if (im) {
+        g.clearRect(0, 0, SW, SH);
+        g.save(); rr(0, 0, SW, SH, 64); g.clip();
+        var r = Math.max(SW / im.width, SH / im.height), iw = im.width * r, ih = im.height * r;
+        g.drawImage(im, (SW - iw) / 2, (SH - ih) / 2, iw, ih);
+        g.restore();
+        tex.needsUpdate = true;
+        return;
+      }
       var d = DATA[k];
       g.clearRect(0, 0, SW, SH);
       g.save(); rr(0, 0, SW, SH, 64); g.clip();
@@ -637,6 +746,13 @@ footer { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; 
       tex.needsUpdate = true;
     }
     drawScreen(current); drawBack();
+    var PS = (window.SITE && window.SITE.phoneShots) || {};
+    Object.keys(PS).forEach(function (k) {
+      if (!PS[k] || !DATA[k]) return;
+      var im = new Image();
+      im.onload = function () { phoneImgs[k] = im; if (current === k) drawScreen(k); };
+      im.src = PS[k];
+    });
     if (document.fonts && document.fonts.load) {
       Promise.all([
         document.fonts.load('700 96px "Bricolage Grotesque"'),
@@ -724,6 +840,54 @@ footer { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; 
     showFallback('The 3D phone could not start in this browser: ' + (err && err.message ? err.message : 'unknown error'));
     if (window.console) console.error(err);
   }
+  }
+  if (canvas && stage) {
+    if (window.IntersectionObserver) {
+      var lazy = new IntersectionObserver(function (en) {
+        if (en[0].isIntersecting) { lazy.disconnect(); load(boot); }
+      }, { rootMargin: '600px' });
+      lazy.observe(stage);
+    } else { load(boot); }
+  }
+})();
+</script>
+<script>
+(function () {
+  var S = window.SITE || {};
+  function $(id) { return document.getElementById(id); }
+  if (S.cv) {
+    ['cv-top', 'cv-hero'].forEach(function (id) {
+      var a = $(id); if (a) { a.href = S.cv; a.hidden = false; }
+    });
+  }
+  if (S.status) { $('status-text').textContent = S.status; $('status').hidden = false; }
+  if (S.experience && S.experience.length) {
+    var box = $('timeline');
+    S.experience.forEach(function (e) {
+      var row = document.createElement('div'); row.className = 't-row';
+      var when = document.createElement('div'); when.className = 'when'; when.textContent = e.period || '';
+      var body = document.createElement('div');
+      var h = document.createElement('h3'); h.textContent = e.title || '';
+      body.appendChild(h);
+      if (e.place) { var w = document.createElement('p'); w.className = 'where'; w.textContent = e.place; body.appendChild(w); }
+      if (e.text) { var x = document.createElement('p'); x.className = 'what'; x.textContent = e.text; body.appendChild(x); }
+      row.appendChild(when); row.appendChild(body); box.appendChild(row);
+    });
+    $('experience').hidden = false; $('nav-experience').hidden = false;
+  }
+  document.querySelectorAll('[data-shot]').forEach(function (fig) {
+    var parts = fig.getAttribute('data-shot').split('-');
+    var item = ((S.shots || {})[parts[0]] || [])[+parts[1]];
+    var src = !item ? '' : (typeof item === 'string' ? item : item.src);
+    if (!src) return;
+    var screen = fig.querySelector('.screen');
+    var img = document.createElement('img');
+    img.src = src; img.alt = (typeof item === 'object' && item.caption) || fig.querySelector('figcaption').textContent;
+    img.loading = 'lazy';
+    screen.appendChild(img);
+    var ph = screen.querySelector('span'); if (ph) ph.hidden = true;
+    if (typeof item === 'object' && item.caption) fig.querySelector('figcaption').textContent = item.caption;
+  });
 })();
 </script>
 <script>
