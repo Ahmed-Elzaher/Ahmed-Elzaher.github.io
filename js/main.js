@@ -1,4 +1,4 @@
-// Preloader Signature Dismiss (2.8s authentic stroke animation)
+// Preloader Signature Dismiss (3 Seconds duration as configured)
 window.addEventListener('load', () => {
   setTimeout(() => {
     const preloader = document.getElementById('preloader');
@@ -8,16 +8,16 @@ window.addEventListener('load', () => {
         preloader.style.display = 'none';
       }, 600);
     }
-  }, 2800);
+  }, 3000);
 });
 
-// Fallback safety timeout
+// Fallback safety timeout in case load event was already fired
 setTimeout(() => {
   const preloader = document.getElementById('preloader');
   if (preloader && !preloader.classList.contains('fade-out')) {
     preloader.classList.add('fade-out');
   }
-}, 3300);
+}, 3800);
 
 // Filter Pills logic for Technical Arsenal
 const pills = document.querySelectorAll('.filter-pills .pill');
