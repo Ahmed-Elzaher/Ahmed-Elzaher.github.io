@@ -184,7 +184,7 @@ Order of the page, top to bottom. Section ids are used by CSS and JS; do not ren
 - `--font-sig`: **Caveat**, used **only** for the preloader signature.
 - Do not add more font families.
 
-**Breakpoints:** `max-width: 860px` (tablet, columns stack) and `max-width: 540px` (phone, the CV button collapses to its icon).
+**Breakpoints:** `width <= 860px` (tablet: columns stack, 3D showcase stacks), `width <= 640px` (mobile: project mockup frames switch to touch horizontal swipe), `width <= 540px` (phone: CV button collapses to icon, compact padding and grids), `width <= 380px` (compact mobile).
 
 **Rules:**
 - No new accent hues. Green is reserved for "available".
@@ -301,7 +301,7 @@ For a single file, run the tool directly: `npx eslint js/main.js`, `npx stylelin
 
 **Legacy baseline (measured when the tooling was added).** The existing code predates these rules, so `npm run lint` is not clean yet:
 - ESLint on `js/`: **90 problems** (85 errors, 5 warnings)
-- Stylelint on `css/`: **77 problems**
+- Stylelint on `css/`: **73 problems**
 - Prettier: 4 files differ (`config.js`, `css/style.css`, `js/main.js`, `js/three-phone.js`)
 
 Rule: these numbers may only go down. Do not "fix" lint in code you are not otherwise changing. When you finish a task, lint the files you touched and compare. Update the baseline numbers here when they change.
