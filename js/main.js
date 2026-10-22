@@ -1,4 +1,4 @@
-// Preloader Signature Dismiss (3 Seconds duration as configured)
+// Preloader Dismiss (Snappy 1.4s tech intro)
 window.addEventListener('load', () => {
   setTimeout(() => {
     const preloader = document.getElementById('preloader');
@@ -6,18 +6,18 @@ window.addEventListener('load', () => {
       preloader.classList.add('fade-out');
       setTimeout(() => {
         preloader.style.display = 'none';
-      }, 600);
+      }, 500);
     }
-  }, 3000);
+  }, 1400);
 });
 
-// Fallback safety timeout in case load event was already fired
+// Fallback safety timeout
 setTimeout(() => {
   const preloader = document.getElementById('preloader');
   if (preloader && !preloader.classList.contains('fade-out')) {
     preloader.classList.add('fade-out');
   }
-}, 3800);
+}, 2200);
 
 // Filter Pills logic for Technical Arsenal
 const pills = document.querySelectorAll('.filter-pills .pill');

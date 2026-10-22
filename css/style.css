@@ -44,7 +44,7 @@ body {
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; border: none; cursor: pointer; background: none; }
 
-/* ==================== Signature Preloader ==================== */
+/* ==================== Modern Tech Monogram Preloader ==================== */
 .preloader {
   position: fixed;
   inset: 0;
@@ -54,7 +54,7 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s ease;
 }
 
 .preloader.fade-out {
@@ -63,45 +63,143 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   pointer-events: none;
 }
 
-.sig-container {
+.loader-content {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.loader-monogram {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.sig-svg {
-  width: min(360px, 85vw);
-  height: 130px;
-  overflow: visible;
+.loader-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--accent);
+  border-right-color: var(--accent-light);
+  animation: spin-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 }
 
-.sig-text {
-  font-family: var(--font-sig);
-  font-size: 88px;
-  font-weight: 700;
-  fill: transparent;
-  stroke: var(--accent);
-  stroke-width: 2px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 900;
-  stroke-dashoffset: 900;
-  animation: drawSignature 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards, fillSignature 0.8s ease 1.8s forwards;
-  filter: drop-shadow(0 0 14px var(--accent-glow));
-  will-change: stroke-dashoffset, fill;
+.loader-ring-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  opacity: 0.25;
+  animation: pulse-ring 2s ease-out infinite;
 }
 
-@keyframes drawSignature {
-  0% { stroke-dashoffset: 900; }
-  100% { stroke-dashoffset: 0; }
+.loader-logo {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: logo-breath 2s ease-in-out infinite alternate;
 }
 
-@keyframes fillSignature {
+.logo-mark {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 12px var(--accent-glow));
+}
+
+.loader-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.loader-name {
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: #fff;
+}
+
+.loader-role {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--accent-light);
+}
+
+.loader-bar-wrap {
+  width: 140px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 0.25rem;
+}
+
+.loader-bar-fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent-light), transparent);
+  transform: translateX(-100%);
+  animation: progress-sweep 1.5s ease-in-out infinite;
+}
+
+@keyframes spin-ring {
   to {
-    fill: #fff;
-    stroke: #fff;
-    filter: drop-shadow(0 0 20px rgba(45, 104, 255, 0.6));
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.05;
+  }
+
+  100% {
+    transform: scale(0.95);
+    opacity: 0.35;
+  }
+}
+
+@keyframes logo-breath {
+  from {
+    transform: scale(0.96);
+    filter: drop-shadow(0 0 8px var(--accent-glow));
+  }
+
+  to {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 18px var(--accent-glow));
+  }
+}
+
+@keyframes progress-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(20%);
+  }
+
+  100% {
+    transform: translateX(100%);
   }
 }
 
