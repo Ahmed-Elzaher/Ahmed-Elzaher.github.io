@@ -48,6 +48,7 @@ My engineering approach structures applications cleanly into distinct architectu
 ### 1. [MatchIn (SkillMatch)](https://github.com/Team-2-Skill-Project/Flutter)
 > *AI-powered career and recruitment platform.*
 * **Role:** Flutter Developer (Team Project).
+* **Links:** [Google Play Store](https://play.google.com/store/apps/details?id=com.app.MatchIn) • [GitHub Repository](https://github.com/Team-2-Skill-Project/Flutter)
 * **Contributions:** End-to-end authentication flow (Login, Registration, OTP, Password Reset, Google Sign-In) and Saved Jobs with real-time application tracking.
 * **Stack:** Flutter, Dart, Clean Architecture, BLoC/Cubit, Dio, GetIt, Firebase.
 

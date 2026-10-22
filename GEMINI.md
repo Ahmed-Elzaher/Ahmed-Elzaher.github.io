@@ -50,7 +50,7 @@ Use these exactly. Do not paraphrase them into something stronger.
 
 ### Projects (verified from the repositories and the owner)
 
-**MatchIn (SkillMatch)** — https://github.com/Team-2-Skill-Project/Flutter
+**MatchIn (SkillMatch)** — https://github.com/Team-2-Skill-Project/Flutter • Google Play: https://play.google.com/store/apps/details?id=com.app.MatchIn
 - Team project: an AI-powered career and recruitment mobile app (CV parsing, job matching with scores, career roadmap, AI mentor).
 - **Owner's role: Flutter Developer.** Owner built: **Auth** (login, registration, OTP, password reset, Google sign-in) and **Saved** (bookmarked jobs, application status tracking).
 - Do **not** claim the owner built the matching engine, roadmap, chatbot, CV extraction, backend or the whole app.
