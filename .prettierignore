@@ -1,0 +1,12 @@
+# Legacy monolith: reformatting it would produce a ~2000-line diff.
+# Remove this line once the CSS and JS have been moved out of index.html.
+index.html
+
+# Vendored, generated or binary-like files
+vendor/
+three.min.js
+favicon.svg
+package-lock.json
+
+# Docs keep their hand-aligned tables
+*.md

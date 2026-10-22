@@ -1,0 +1,22 @@
+{
+  "name": "ahmed-elzaher-portfolio",
+  "private": true,
+  "type": "module",
+  "description": "Personal portfolio of Ahmed Elzaher. Static site served by GitHub Pages. The tooling below is for development only and is not deployed.",
+  "scripts": {
+    "start": "python3 -m http.server 3000",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint \"js/**/*.js\" --no-error-on-unmatched-pattern",
+    "lint:css": "stylelint \"css/**/*.css\" --allow-empty-input",
+    "format": "prettier --write . --ignore-unknown",
+    "format:check": "prettier --check . --ignore-unknown"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.10",
+    "stylelint": "^17.16.0",
+    "stylelint-config-standard": "^40.0.0"
+  }
+}
