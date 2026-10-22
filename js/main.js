@@ -1,4 +1,4 @@
-// Preloader Signature Dismiss (Smooth 2.5s write flow)
+// Preloader Dismiss (Clean 1.6s reveal)
 window.addEventListener('load', () => {
   setTimeout(() => {
     const preloader = document.getElementById('preloader');
@@ -6,9 +6,9 @@ window.addEventListener('load', () => {
       preloader.classList.add('fade-out');
       setTimeout(() => {
         preloader.style.display = 'none';
-      }, 600);
+      }, 500);
     }
-  }, 2500);
+  }, 1600);
 });
 
 // Fallback safety timeout

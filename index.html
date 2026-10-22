@@ -15,26 +15,25 @@
 </head>
 <body>
 
-<!-- ==================== Ambient Background Lines (Subtle Tech Accent) ==================== -->
+<!-- ==================== Ambient Corner Lines (Top-Right & Top-Left Tech Accents) ==================== -->
 <div class="ambient-lines" aria-hidden="true">
-  <svg class="lines-svg" viewBox="0 0 1440 900" fill="none" preserveAspectRatio="none">
-    <!-- Top-left to Right diagonal accent line -->
-    <path class="tech-line tech-line-1" d="M -50,120 L 450,120 L 750,380 L 1500,380" stroke="var(--accent)" stroke-width="1.2" stroke-opacity="0.16" />
-    <!-- Secondary subtle accent wire -->
-    <path class="tech-line tech-line-2" d="M 300,-50 L 300,280 L 580,560 L 1500,560" stroke="#ffffff" stroke-width="1" stroke-opacity="0.06" />
-    <!-- Angular connection node -->
-    <circle cx="750" cy="380" r="3" fill="var(--accent)" fill-opacity="0.4" />
+  <svg class="lines-svg" viewBox="0 0 1440 900" fill="none">
+    <!-- Top-Left Corner Accent Lines -->
+    <path class="tech-line" d="M -20,80 L 180,80 L 260,160 L 400,160" stroke="var(--accent)" stroke-width="1.2" stroke-opacity="0.22" />
+    <path class="tech-line tech-line-subtle" d="M 60,-20 L 60,120 L 140,200 L 140,320" stroke="#ffffff" stroke-width="0.8" stroke-opacity="0.08" />
+
+    <!-- Top-Right Corner Accent Lines -->
+    <path class="tech-line" d="M 1460,100 L 1260,100 L 1180,180 L 1020,180" stroke="var(--accent)" stroke-width="1.2" stroke-opacity="0.22" />
+    <path class="tech-line tech-line-subtle" d="M 1380,-20 L 1380,140 L 1300,220 L 1300,340" stroke="#ffffff" stroke-width="0.8" stroke-opacity="0.08" />
   </svg>
 </div>
 
-<!-- ==================== Smooth Handwritten Signature Preloader ==================== -->
+<!-- ==================== Clean Name Preloader ==================== -->
 <div id="preloader" class="preloader">
   <div class="sig-container">
-    <svg class="sig-svg" viewBox="0 0 460 140" fill="none">
-      <!-- Elzaher Handwritten Signature Path with smooth cursive trajectory -->
-      <path class="sig-path" d="M 45,95 Q 60,25 78,35 Q 92,45 80,105 Q 115,40 135,75 Q 150,105 168,70 Q 185,45 198,82 Q 225,25 240,65 Q 255,105 272,70 Q 290,45 315,75 Q 345,108 370,45 Q 395,25 425,75 M 110,65 L 175,65" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-      <text x="50%" y="82%" text-anchor="middle" class="sig-text-fallback">Elzaher</text>
-    </svg>
+    <div class="sig-name-wrap">
+      <span class="sig-name">Elzaher</span>
+    </div>
   </div>
 </div>
 
