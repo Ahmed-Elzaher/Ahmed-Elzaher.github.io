@@ -1,12 +1,12 @@
-// Preloader Signature Dismiss (3 Seconds duration as configured)
+// Preloader Signature Dismiss (3 Seconds duration as configured, GPU & Memory Optimized)
 window.addEventListener('load', () => {
   setTimeout(() => {
     const preloader = document.getElementById('preloader');
     if (preloader) {
       preloader.classList.add('fade-out');
       setTimeout(() => {
-        preloader.style.display = 'none';
-      }, 600);
+        preloader.remove(); // Remove from DOM completely to release GPU layer and memory
+      }, 500);
     }
   }, 3000);
 });
@@ -16,6 +16,9 @@ setTimeout(() => {
   const preloader = document.getElementById('preloader');
   if (preloader && !preloader.classList.contains('fade-out')) {
     preloader.classList.add('fade-out');
+    setTimeout(() => {
+      preloader.remove();
+    }, 500);
   }
 }, 3800);
 

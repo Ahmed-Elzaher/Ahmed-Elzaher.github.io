@@ -76,7 +76,7 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   }
 }
 
-/* ==================== Signature Splash / Preloader ==================== */
+/* ==================== Signature Splash / Preloader (GPU Optimized) ==================== */
 .preloader {
   position: fixed;
   inset: 0;
@@ -86,7 +86,11 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  contain: strict;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.45s ease;
+  will-change: opacity, visibility;
 }
 
 .preloader.fade-out {
@@ -100,12 +104,14 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transform: translateZ(0);
 }
 
 .sig-svg {
   width: min(360px, 85vw);
   height: 130px;
   overflow: visible;
+  shape-rendering: geometricPrecision;
 }
 
 .sig-text {
@@ -120,6 +126,7 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   animation: draw-signature 2.1s cubic-bezier(0.45, 0, 0.25, 1) forwards, fill-signature 0.6s ease 1.9s forwards;
   filter: drop-shadow(0 0 16px rgba(45, 104, 255, 0.8));
   will-change: stroke-dashoffset, fill;
+  transform: translateZ(0);
 }
 
 @keyframes draw-signature {
