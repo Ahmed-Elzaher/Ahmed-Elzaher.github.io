@@ -1,4 +1,4 @@
-// Preloader Dismiss (Clean 1.6s reveal)
+// Preloader Signature Dismiss (2.8s authentic stroke animation)
 window.addEventListener('load', () => {
   setTimeout(() => {
     const preloader = document.getElementById('preloader');
@@ -6,9 +6,9 @@ window.addEventListener('load', () => {
       preloader.classList.add('fade-out');
       setTimeout(() => {
         preloader.style.display = 'none';
-      }, 500);
+      }, 600);
     }
-  }, 1600);
+  }, 2800);
 });
 
 // Fallback safety timeout
