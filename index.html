@@ -15,28 +15,26 @@
 </head>
 <body>
 
-<!-- ==================== Modern Tech Monogram Preloader ==================== -->
+<!-- ==================== Ambient Background Lines (Subtle Tech Accent) ==================== -->
+<div class="ambient-lines" aria-hidden="true">
+  <svg class="lines-svg" viewBox="0 0 1440 900" fill="none" preserveAspectRatio="none">
+    <!-- Top-left to Right diagonal accent line -->
+    <path class="tech-line tech-line-1" d="M -50,120 L 450,120 L 750,380 L 1500,380" stroke="var(--accent)" stroke-width="1.2" stroke-opacity="0.16" />
+    <!-- Secondary subtle accent wire -->
+    <path class="tech-line tech-line-2" d="M 300,-50 L 300,280 L 580,560 L 1500,560" stroke="#ffffff" stroke-width="1" stroke-opacity="0.06" />
+    <!-- Angular connection node -->
+    <circle cx="750" cy="380" r="3" fill="var(--accent)" fill-opacity="0.4" />
+  </svg>
+</div>
+
+<!-- ==================== Smooth Handwritten Signature Preloader ==================== -->
 <div id="preloader" class="preloader">
-  <div class="loader-content">
-    <div class="loader-monogram">
-      <div class="loader-ring"></div>
-      <div class="loader-ring-pulse"></div>
-      <div class="loader-logo">
-        <svg viewBox="0 0 64 64" class="logo-mark" fill="none">
-          <!-- Geometric Flutter/Modern Chevron AE Motif -->
-          <path d="M12 32L32 12L42 22L22 42L12 32Z" fill="var(--accent)" fill-opacity="0.9" />
-          <path d="M32 52L22 42L32 32L42 42L32 52Z" fill="#ffffff" />
-          <path d="M32 32L42 22L52 32L42 42L32 32Z" fill="var(--accent-light)" />
-        </svg>
-      </div>
-    </div>
-    <div class="loader-brand">
-      <span class="loader-name">AHMED ELZAHER</span>
-      <span class="loader-role">FLUTTER DEVELOPER</span>
-    </div>
-    <div class="loader-bar-wrap">
-      <div class="loader-bar-fill"></div>
-    </div>
+  <div class="sig-container">
+    <svg class="sig-svg" viewBox="0 0 460 140" fill="none">
+      <!-- Elzaher Handwritten Signature Path with smooth cursive trajectory -->
+      <path class="sig-path" d="M 45,95 Q 60,25 78,35 Q 92,45 80,105 Q 115,40 135,75 Q 150,105 168,70 Q 185,45 198,82 Q 225,25 240,65 Q 255,105 272,70 Q 290,45 315,75 Q 345,108 370,45 Q 395,25 425,75 M 110,65 L 175,65" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      <text x="50%" y="82%" text-anchor="middle" class="sig-text-fallback">Elzaher</text>
+    </svg>
   </div>
 </div>
 

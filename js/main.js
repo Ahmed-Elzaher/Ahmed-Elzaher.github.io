@@ -1,4 +1,4 @@
-// Preloader Dismiss (Snappy 1.4s tech intro)
+// Preloader Signature Dismiss (Smooth 2.5s write flow)
 window.addEventListener('load', () => {
   setTimeout(() => {
     const preloader = document.getElementById('preloader');
@@ -6,9 +6,9 @@ window.addEventListener('load', () => {
       preloader.classList.add('fade-out');
       setTimeout(() => {
         preloader.style.display = 'none';
-      }, 500);
+      }, 600);
     }
-  }, 1400);
+  }, 2500);
 });
 
 // Fallback safety timeout
@@ -17,7 +17,7 @@ setTimeout(() => {
   if (preloader && !preloader.classList.contains('fade-out')) {
     preloader.classList.add('fade-out');
   }
-}, 2200);
+}, 3300);
 
 // Filter Pills logic for Technical Arsenal
 const pills = document.querySelectorAll('.filter-pills .pill');
