@@ -165,17 +165,17 @@ Order of the page, top to bottom. Section ids are used by CSS and JS; do not ren
 
 | Token | Value | Use |
 |---|---|---|
-| `--bg` | `#070b12` | Page background |
-| `--surface` | `#0d1420` | Sections, panels |
-| `--surface-card` | `#121b2b` | Cards |
-| `--surface-hover` | `#18253b` | Hover state |
+| `--bg` | `#030305` | Page background (OLED black) |
+| `--surface` | `#0a0a0d` | Sections, panels |
+| `--surface-card` | `#101115` | Cards |
+| `--surface-hover` | `#161820` | Hover state |
 | `--line` / `--line-strong` | `rgba(255,255,255,.08)` / `.16` | Borders |
-| `--fg` | `#f1f5f9` | Main text |
-| `--muted` | `#94a3b8` | Secondary text |
-| `--dim` | `#64748b` | Tertiary text, captions |
-| `--accent` | `#38bdf8` | The one accent (sky blue) |
-| `--accent-glow` | `rgba(56,189,248,.25)` | Glows, focus halos |
-| `--accent-ink` | `#031525` | Text on accent buttons |
+| `--fg` | `#f4f4f5` | Main text (crisp white) |
+| `--muted` | `#a1a1aa` | Secondary text |
+| `--dim` | `#71717a` | Tertiary text, captions |
+| `--accent` | `#2d68ff` | The one accent (Electric Cobalt Blue) |
+| `--accent-glow` | `rgba(45,104,255,.35)` | Glows, focus halos |
+| `--accent-ink` | `#ffffff` | Text on accent buttons |
 | `--green` / `--green-glow` | `#22c55e` / `.35` | **Availability status only** |
 
 **Typography:**
@@ -300,8 +300,8 @@ For a single file, run the tool directly: `npx eslint js/main.js`, `npx stylelin
 - **EditorConfig** (`.editorconfig`): UTF-8, LF, two spaces, final newline, trimmed trailing whitespace.
 
 **Legacy baseline (measured when the tooling was added).** The existing code predates these rules, so `npm run lint` is not clean yet:
-- ESLint on `js/`: **90 problems** (85 errors, 5 warnings)
-- Stylelint on `css/`: **73 problems**
+- ESLint on `js/`: **84 problems** (79 errors, 5 warnings)
+- Stylelint on `css/`: **66 problems**
 - Prettier: 4 files differ (`config.js`, `css/style.css`, `js/main.js`, `js/three-phone.js`)
 
 Rule: these numbers may only go down. Do not "fix" lint in code you are not otherwise changing. When you finish a task, lint the files you touched and compare. Update the baseline numbers here when they change.

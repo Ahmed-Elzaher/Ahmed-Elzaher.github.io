@@ -37,8 +37,8 @@
 
       scene.add(new T.AmbientLight(0xffffff, 0.65));
       var key = new T.DirectionalLight(0xffffff, 0.95); key.position.set(3, 4, 5); scene.add(key);
-      var rim = new T.DirectionalLight(0x38bdf8, 0.9); rim.position.set(-4, 2, -3); scene.add(rim);
-      var fill = new T.PointLight(0x38bdf8, 0.5, 12); fill.position.set(0, -2, 4); scene.add(fill);
+      var rim = new T.DirectionalLight(0x2d68ff, 0.9); rim.position.set(-4, 2, -3); scene.add(rim);
+      var fill = new T.PointLight(0x2d68ff, 0.5, 12); fill.position.set(0, -2, 4); scene.add(fill);
 
       var W = 1.2, H = 2.5, D = 0.14;
       function roundedRect(w, h, r) {
@@ -109,7 +109,7 @@
       phone.add(backMark);
       function drawBack() {
         bg2.clearRect(0, 0, 256, 256);
-        bg2.fillStyle = '#38bdf8';
+        bg2.fillStyle = '#2d68ff';
         bg2.font = '700 110px "JetBrains Mono", monospace';
         bg2.textAlign = 'center'; bg2.textBaseline = 'middle';
         bg2.fillText('AE', 128, 128);
@@ -153,17 +153,17 @@
         g.clearRect(0, 0, SW, SH);
         g.save(); rr(0, 0, SW, SH, 64); g.clip();
         var bgG = g.createLinearGradient(0, 0, 0, SH);
-        bgG.addColorStop(0, '#060a12'); bgG.addColorStop(1, '#0c1e30');
+        bgG.addColorStop(0, '#000000'); bgG.addColorStop(1, '#090b14');
         g.fillStyle = bgG; g.fillRect(0, 0, SW, SH);
         var glow = g.createRadialGradient(SW * 0.72, SH * 0.28, 10, SW * 0.72, SH * 0.28, 430);
-        glow.addColorStop(0, 'rgba(56,189,248,0.36)'); glow.addColorStop(1, 'rgba(56,189,248,0)');
+        glow.addColorStop(0, 'rgba(45,104,255,0.38)'); glow.addColorStop(1, 'rgba(45,104,255,0)');
         g.fillStyle = glow; g.fillRect(0, 0, SW, SH);
 
         g.textAlign = 'left'; g.textBaseline = 'alphabetic';
         g.fillStyle = '#e7eef6'; g.font = '500 26px "JetBrains Mono", monospace'; g.fillText('9:41', 54, 70);
         g.fillStyle = '#000'; rr(SW / 2 - 62, 34, 124, 40, 20); g.fill();
 
-        g.fillStyle = '#38bdf8'; g.font = '600 24px "JetBrains Mono", monospace';
+        g.fillStyle = '#3b82f6'; g.font = '600 24px "JetBrains Mono", monospace';
         g.fillText(d.kind.toUpperCase(), 54, 330);
 
         var size = 100;
@@ -181,16 +181,16 @@
         d.stack.forEach(function (s) {
           var w = g.measureText(s).width + 36;
           if (cx + w > SW - 54) { cx = 54; cy += 68; }
-          g.strokeStyle = 'rgba(56,189,248,0.45)'; g.lineWidth = 2; rr(cx, cy, w, 50, 14); g.stroke();
-          g.fillStyle = '#bae6fd'; g.fillText(s, cx + 18, cy + 34);
+          g.strokeStyle = 'rgba(45,104,255,0.45)'; g.lineWidth = 2; rr(cx, cy, w, 50, 14); g.stroke();
+          g.fillStyle = '#93c5fd'; g.fillText(s, cx + 18, cy + 34);
           cx += w + 14;
         });
 
         g.fillStyle = '#64748b'; g.font = '600 22px "JetBrains Mono", monospace'; g.fillText('ROLE', 54, 1040);
         g.fillStyle = '#ffffff'; g.font = '600 34px "Plus Jakarta Sans", sans-serif'; g.fillText(d.role, 54, 1090);
 
-        g.fillStyle = '#38bdf8'; rr(54, 1150, SW - 108, 92, 26); g.fill();
-        g.fillStyle = '#031525'; g.font = '700 32px "Plus Jakarta Sans", sans-serif'; g.textAlign = 'center';
+        g.fillStyle = '#2563eb'; rr(54, 1150, SW - 108, 92, 26); g.fill();
+        g.fillStyle = '#ffffff'; g.font = '700 32px "Plus Jakarta Sans", sans-serif'; g.textAlign = 'center';
         g.fillText('Explore Project ↗', SW / 2, 1208);
         g.fillStyle = 'rgba(255,255,255,0.7)'; rr(SW / 2 - 80, SH - 32, 160, 6, 3); g.fill();
         g.restore();
