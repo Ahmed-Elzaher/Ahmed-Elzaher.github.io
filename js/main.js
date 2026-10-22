@@ -1,4 +1,4 @@
-// Preloader Signature Dismiss (3 Seconds duration as configured, GPU & Memory Optimized)
+// ==================== Preloader Signature Dismiss (3 Seconds duration, GPU & Memory Optimized) ====================
 window.addEventListener('load', () => {
   setTimeout(() => {
     const preloader = document.getElementById('preloader');

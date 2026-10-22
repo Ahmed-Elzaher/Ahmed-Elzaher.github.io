@@ -29,11 +29,22 @@
 </div>
 
 <!-- ==================== Signature Splash / Preloader ==================== -->
-<div id="preloader" class="preloader">
+<div id="preloader" class="preloader variant-combined">
+  <div class="preloader-ambient-glow" aria-hidden="true"></div>
+
   <div class="sig-container">
-    <svg class="sig-svg" viewBox="0 0 380 130">
-      <text x="50%" y="68%" text-anchor="middle" class="sig-text">Elzaher</text>
-    </svg>
+    <div class="sig-wrapper">
+      <svg class="sig-svg" viewBox="0 0 380 130">
+        <text x="50%" y="68%" text-anchor="middle" class="sig-text">Elzaher</text>
+      </svg>
+      <div class="sig-shimmer-beam" aria-hidden="true"></div>
+    </div>
+
+    <div class="sig-tech-status" aria-hidden="true">
+      <span class="status-prefix">&gt;</span>
+      <span class="status-text">INITIALIZING FLUTTER SYSTEM</span>
+      <span class="status-cursor">_</span>
+    </div>
   </div>
 </div>
 
@@ -388,9 +399,10 @@
             <span class="tech-chip">Firebase</span>
           </div>
           <div class="project-actions">
-            <span class="btn-primary is-disabled" title="Pending official release permission" aria-disabled="true">
+            <button type="button" class="btn-primary is-disabled" disabled aria-disabled="true" title="Pending official release permission">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg>
               Google Play ↗
-            </span>
+            </button>
             <a class="btn-secondary" href="https://github.com/Team-2-Skill-Project/Flutter" target="_blank" rel="noopener">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
               GitHub ↗
