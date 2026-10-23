@@ -124,6 +124,18 @@
       };
       var current = 'matchin';
       var phoneImgs = {};
+      var imgMatchIn = new Image();
+      imgMatchIn.src = 'screens/matchin/home.jpg';
+      imgMatchIn.onload = function () {
+        phoneImgs.matchin = imgMatchIn;
+        if (current === 'matchin') { drawScreen('matchin'); }
+      };
+      var imgEngipedia = new Image();
+      imgEngipedia.src = 'screens/engipedia/home.jpg';
+      imgEngipedia.onload = function () {
+        phoneImgs.engipedia = imgEngipedia;
+        if (current === 'engipedia') { drawScreen('engipedia'); }
+      };
       function rr(x, y, w, h, r) {
         g.beginPath(); g.moveTo(x + r, y);
         g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r);
@@ -199,10 +211,10 @@
       drawScreen(current); drawBack();
 
       // Interaction
-      var userY = 0, vel = 0, dragging = false, lastX = 0, idleSince = performance.now();
+      var userY = 0, vel = 0, dragging = false, lastX = 0, startX = 0, startY = 0, idleSince = performance.now();
       var spin = 0, spinStart = 0, swapped = true, pendingKey = current;
       canvas.addEventListener('pointerdown', function (e) {
-        dragging = true; lastX = e.clientX; vel = 0;
+        dragging = true; lastX = e.clientX; startX = e.clientX; startY = e.clientY; vel = 0;
         try { canvas.setPointerCapture(e.pointerId); } catch (err) {}
         stage.classList.add('grabbing');
       });
@@ -211,7 +223,15 @@
         var dx = e.clientX - lastX; lastX = e.clientX;
         userY += dx * 0.012; vel = dx * 0.012; idleSince = performance.now();
       });
-      function endDrag() { dragging = false; stage.classList.remove('grabbing'); idleSince = performance.now(); }
+      function endDrag(e) {
+        if (dragging && e && typeof e.clientX === 'number') {
+          var dist = Math.hypot(e.clientX - startX, e.clientY - startY);
+          if (dist < 8) {
+            canvas.dispatchEvent(new CustomEvent('open-case-study', { detail: { project: current }, bubbles: true }));
+          }
+        }
+        dragging = false; stage.classList.remove('grabbing'); idleSince = performance.now();
+      }
       canvas.addEventListener('pointerup', endDrag);
       canvas.addEventListener('pointercancel', endDrag);
       canvas.addEventListener('keydown', function (e) {

@@ -58,14 +58,10 @@
     </a>
 
     <div class="top-actions">
-      <!-- GitHub Button -->
-      <a href="https://github.com/Ahmed-Elzaher" target="_blank" rel="noopener" class="icon-btn" aria-label="GitHub Profile" title="GitHub">
-        <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-      </a>
-
-      <!-- LinkedIn Button -->
-      <a href="https://www.linkedin.com/in/ahmed-elzaher13/" target="_blank" rel="noopener" class="icon-btn" aria-label="LinkedIn Profile" title="LinkedIn">
-        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+      <!-- Let's Work Together Primary CTA -->
+      <a href="#contact" class="work-together-btn" id="workTogetherBtn">
+        <span>Let's Work Together</span>
+        <svg class="work-together-icon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
 
       <!-- Download CV Button -->
@@ -90,7 +86,7 @@
         </h1>
 
         <p class="hero-bio">
-          My name is <strong>Ahmed Elzaher</strong>, a <strong>Mobile Application Developer</strong> specializing in crafting high-performance, cross-platform apps with <strong>Flutter & Dart</strong>. Experienced in designing production-ready systems using <strong>Clean Architecture</strong>, maintainable <strong>BLoC / Cubit</strong> state management, and reliable <strong>RESTful APIs</strong>. Graduating in <strong>Communication & Computer Engineering</strong> from <strong>Mansoura University (June 2026 · Very Good)</strong>.
+          <strong>Flutter Developer</strong> specializing in crafting high-performance, cross-platform applications. Passionate about building production-ready systems leveraging <strong>Clean Architecture</strong>, <strong>BLoC / Cubit</strong> state management, and robust <strong>RESTful APIs</strong>. B.Sc. in <strong>Communication & Computer Engineering</strong>, <strong>Mansoura University</strong> (June 2026 · Very Good).
         </p>
 
         <!-- Key Stats Row -->
@@ -355,9 +351,13 @@
           <p style="color: var(--muted); font-size: 1.02rem; line-height: 1.6;">
             Pick a project below to preview it live on the 3D phone screen, then turn and explore the phone with your finger or mouse in real-time 3D space.
           </p>
-          <div class="actions" style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+          <div class="actions" style="display: flex; gap: 0.75rem; margin-top: 0.5rem; flex-wrap: wrap;">
             <button class="showcase-btn active" type="button" data-proj="matchin" aria-pressed="true">MatchIn</button>
             <button class="showcase-btn" type="button" data-proj="engipedia" aria-pressed="false">Engipedia</button>
+            <button class="showcase-explore-btn" type="button" id="stageExploreBtn" data-open-modal="matchin">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              <span>Explore Case Study</span>
+            </button>
           </div>
         </div>
       </div>
@@ -399,6 +399,10 @@
             <span class="tech-chip">Firebase</span>
           </div>
           <div class="project-actions">
+            <button type="button" class="btn-case-study" data-open-modal="matchin">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              Case Study & Details
+            </button>
             <button type="button" class="btn-primary is-disabled" disabled aria-disabled="true" title="Pending official release permission">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg>
               Google Play ↗
@@ -465,6 +469,10 @@
             <span class="tech-chip">PDF Engine</span>
           </div>
           <div class="project-actions">
+            <button type="button" class="btn-case-study" data-open-modal="engipedia">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              Case Study & Details
+            </button>
             <a class="btn-primary" href="https://github.com/Ahmed-Elzaher/engipedia" target="_blank" rel="noopener">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
               View on GitHub ↗
@@ -500,6 +508,113 @@
       </article>
     </section>
 
+    <!-- ==================== Credentials & Practical Training ==================== -->
+    <section class="section" id="credentials">
+      <div class="section-head">
+        <h2 class="sec-title">
+          <span class="solid">CREDENTIALS &</span>
+          <span class="outline">TRAINING</span>
+        </h2>
+        <p class="section-subtitle">Professional certifications, continuous technical development, and hands-on software engineering training.</p>
+      </div>
+
+      <div class="credentials-grid">
+        <!-- Practical Training & Internships Panel -->
+        <div class="credential-panel">
+          <div class="panel-header">
+            <div class="panel-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div>
+              <h3 class="panel-title">Practical Engineering Training</h3>
+              <span class="panel-subtitle">Hands-on industrial and academic training</span>
+            </div>
+          </div>
+
+          <div class="credential-cards">
+            <article class="credential-card">
+              <div class="card-meta">
+                <span class="card-badge">Hands-on Training</span>
+                <span class="card-date">Mansoura University · CCE</span>
+              </div>
+              <h4 class="card-title">Mobile Application Engineering & Clean Architecture</h4>
+              <p class="card-org">Faculty of Engineering · Communication & Computer Engineering</p>
+              <p class="card-desc">Advanced specialization in production-ready Flutter app architecture, SOLID principles, reactive state management (BLoC/Cubit), and scalable RESTful API integration.</p>
+              <div class="card-tags">
+                <span>Clean Architecture</span>
+                <span>BLoC / Cubit</span>
+                <span>RESTful APIs</span>
+                <span>SOLID</span>
+              </div>
+            </article>
+
+            <article class="credential-card">
+              <div class="card-meta">
+                <span class="card-badge">Technical Training</span>
+                <span class="card-date">Specialized Track</span>
+              </div>
+              <h4 class="card-title">Cross-Platform Mobile Development Track</h4>
+              <p class="card-org">Industry-Standard Software Engineering</p>
+              <p class="card-desc">Intensive practical training covering full app lifecycle, Git workflow, CI/CD for mobile, SQLite/Hive local persistence, and Firebase cloud services.</p>
+              <div class="card-tags">
+                <span>Flutter & Dart</span>
+                <span>Firebase</span>
+                <span>Git & GitHub</span>
+                <span>Local DB</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Professional Certifications Panel -->
+        <div class="credential-panel">
+          <div class="panel-header">
+            <div class="panel-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            </div>
+            <div>
+              <h3 class="panel-title">Professional Certifications</h3>
+              <span class="panel-subtitle">Verified technical credentials & milestones</span>
+            </div>
+          </div>
+
+          <div class="credential-cards">
+            <article class="credential-card">
+              <div class="card-meta">
+                <span class="card-badge verified">Academic Degree</span>
+                <span class="card-date">Graduation June 2026</span>
+              </div>
+              <h4 class="card-title">B.Sc. in Communication & Computer Engineering</h4>
+              <p class="card-org">Mansoura University · Grade: Very Good</p>
+              <p class="card-desc">Rigorous engineering curriculum covering computer algorithms, data structures, operating systems, networking, database systems, and software engineering.</p>
+              <div class="card-tags">
+                <span>Algorithms</span>
+                <span>Data Structures</span>
+                <span>OOP</span>
+                <span>Software Eng</span>
+              </div>
+            </article>
+
+            <article class="credential-card">
+              <div class="card-meta">
+                <span class="card-badge">Certified Skill</span>
+                <span class="card-date">Continuous Learning</span>
+              </div>
+              <h4 class="card-title">Advanced Flutter & State Management Specialization</h4>
+              <p class="card-org">Professional Development Program</p>
+              <p class="card-desc">Deep-dive into performance optimization, memory leak prevention, custom rendering, Dio networking with interceptors, and unit/widget testing patterns.</p>
+              <div class="card-tags">
+                <span>Performance</span>
+                <span>Dio Interceptors</span>
+                <span>GetIt</span>
+                <span>State Pattern</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ==================== Contact Form (EmailJS) ==================== -->
     <section class="section" id="contact">
       <div class="section-head">
@@ -525,6 +640,16 @@
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
               <span id="copyBtnText">Copy</span>
             </button>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon whatsapp-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.301-.15-1.78-.879-2.056-.98-.276-.1-.477-.15-.678.15-.201.3-.778.98-.954 1.18-.176.2-.352.226-.653.076-.301-.15-1.272-.469-2.423-1.496-.896-.799-1.501-1.786-1.677-2.087-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.15-.176.201-.301.301-.502.101-.201.05-.377-.025-.527-.075-.15-.678-1.635-.929-2.239-.244-.589-.493-.509-.678-.518l-.578-.01c-.201 0-.527.075-.803.377s-1.054 1.03-1.054 2.511 1.079 2.912 1.23 3.113c.15.201 2.124 3.244 5.145 4.549.719.311 1.28.497 1.718.636.722.23 1.378.197 1.898.12.579-.087 1.78-.727 2.031-1.431.251-.703.251-1.305.176-1.431-.076-.126-.277-.201-.578-.352zM12 21.82c-1.776 0-3.518-.477-5.044-1.384l-.362-.215-3.748.983 1-3.653-.236-.375A9.774 9.774 0 012.22 12c0-5.403 4.397-9.8 9.8-9.8 2.617 0 5.077 1.02 6.927 2.87A9.742 9.742 0 0121.78 12c0 5.403-4.397 9.82-9.78 9.82zM12 0C5.383 0 0 5.383 0 12c0 2.115.553 4.179 1.602 6.004L0 24l6.166-1.572A11.95 11.95 0 0012 24c6.617 0 12-5.383 12-12S18.617 0 12 0z"/></svg>
+            </div>
+            <div>
+              <span class="contact-info-label">WhatsApp</span>
+              <a class="contact-info-value contact-info-link" href="https://wa.me/201099261365?text=Hi%20Ahmed,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener">+20 109 926 1365</a>
+            </div>
           </div>
 
           <div class="contact-info-item">
@@ -590,10 +715,31 @@
 
   <!-- ==================== Footer ==================== -->
   <footer>
-    <span>© 2026 Ahmed Elzaher — Flutter Developer</span>
-    <span>Mansoura University (CCE)</span>
+    <div class="footer-links">
+      <a href="https://github.com/Ahmed-Elzaher" target="_blank" rel="noopener">GitHub</a>
+      <span class="footer-dot" aria-hidden="true">·</span>
+      <a href="https://www.linkedin.com/in/ahmed-elzaher13/" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="footer-dot" aria-hidden="true">·</span>
+      <a href="https://wa.me/201099261365" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <div class="footer-meta">
+      <span>© 2026 Ahmed Elzaher — Flutter Developer</span>
+      <span class="footer-dot" aria-hidden="true">·</span>
+      <span>Mansoura University (CCE)</span>
+    </div>
   </footer>
 
+</div>
+
+<!-- ==================== Project Showcase Modal ==================== -->
+<div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+  <div class="project-modal-backdrop" id="modalBackdrop"></div>
+  <div class="project-modal-dialog">
+    <button class="modal-close-btn" id="modalCloseBtn" type="button" aria-label="Close project details">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="project-modal-content" id="modalContent"></div>
+  </div>
 </div>
 
 <!-- Scripts -->
