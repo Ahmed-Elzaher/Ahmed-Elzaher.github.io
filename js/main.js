@@ -551,3 +551,285 @@ function initScrollReveal() {
 }
 
 initScrollReveal();
+
+// ==================== Internationalization (Language Switcher) ====================
+
+const I18N = {
+  en: {
+    langLabel: 'عربي',
+    navAbout: 'About',
+    navSkills: 'Skills',
+    navProjects: 'Projects',
+    navCreds: 'Creds',
+    navConnect: 'Connect',
+    workTogether: "Let's Work Together",
+    downloadCv: 'Download CV',
+    heroLabel: '<span>FLUTTER</span> · <span>CLEAN ARCHITECTURE</span> · <span>MOBILE</span>',
+    heroTitleSolid: 'FLUTTER',
+    heroTitleOutline: 'DEVELOPER',
+    heroBio:
+      '<strong>Flutter Developer</strong> specializing in crafting high-performance, cross-platform applications. Passionate about building production-ready systems leveraging <strong>Clean Architecture</strong>, <strong>BLoC / Cubit</strong> state management, and robust <strong>RESTful APIs</strong>. B.Sc. in <strong>Communication & Computer Engineering</strong>, <strong>Mansoura University</strong> (June 2026 · Very Good).',
+    stat1Lbl: 'Featured Apps',
+    stat2Sub: 'Mansoura University',
+    stat3Title: 'OPEN',
+    stat3Lbl: 'Available For Hire',
+    portraitTooltip: 'Clean code. Smooth UIs. Zero excuses.',
+    badgeText: 'Available For Opportunities',
+    feature1Title: 'Cross-Platform Mobile Engineer',
+    feature1Desc:
+      'From pixel-perfect UI implementation to smooth 60fps animations, delivering unified iOS & Android experiences.',
+    feature2Title: 'Clean Architecture & Scalability',
+    feature2Desc:
+      'Strict decoupling between Presentation, Domain, and Data layers with SOLID principles and Dependency Injection.',
+    arsenalTitleSolid: 'TECHNICAL',
+    arsenalTitleOutline: 'ARSENAL',
+    pillAll: 'ALL',
+    pillMobile: 'MOBILE DEV',
+    pillArch: 'ARCHITECTURE & STATE',
+    pillTools: 'BACKEND & TOOLS',
+    phoneTag: 'Interactive Experience',
+    phoneTitleSolid: 'DRAG THE',
+    phoneTitleOutline: '3D PHONE',
+    phoneSubtitle:
+      'Pick a project below to preview it live on the 3D phone screen, then turn and explore the phone with your finger or mouse in real-time 3D space.',
+    phoneExploreBtn: 'Explore Case Study',
+    projectsTitleSolid: 'FEATURED',
+    projectsTitleOutline: 'PROJECTS',
+    credsTitleSolid: 'CREDENTIALS &',
+    credsTitleOutline: 'TRAINING',
+    credsSubtitle:
+      'Professional certifications, continuous technical development, and hands-on software engineering training.',
+    contactTitleSolid: 'GET IN',
+    contactTitleOutline: 'TOUCH',
+    contactSubtitle:
+      'Open to full-time roles, collaborations, and freelance work. Send me a message — it lands directly in my inbox.',
+    nameLabel: 'Your Name',
+    namePlaceholder: 'Jane Smith',
+    emailLabel: 'Your Email',
+    emailPlaceholder: 'jane@company.com',
+    subjectLabel: 'Subject',
+    subjectPlaceholder: 'Flutter project collaboration',
+    messageLabel: 'Message',
+    messagePlaceholder:
+      "Tell me about your project, timeline, and what you're looking to build...",
+    submitBtnText: 'Send Message',
+    wipTag: 'WIP (Work In Progress)',
+    wipText:
+      'Portfolio is actively evolving ahead of launch. More live demos, detailed case studies, and mobile experiments are being added. Feedback is warmly welcomed!',
+    wipCta: 'Connect on LinkedIn',
+    wipPillText: '🚧 WIP (Work In Progress)',
+  },
+  ar: {
+    langLabel: 'EN',
+    navAbout: 'عني',
+    navSkills: 'المهارات',
+    navProjects: 'المشاريع',
+    navCreds: 'الشهادات',
+    navConnect: 'تواصل',
+    workTogether: 'لنعمل معاً',
+    downloadCv: 'تحميل الـ CV',
+    heroLabel: '<span>فلاتر</span> · <span>CLEAN ARCHITECTURE</span> · <span>تطبيقات الموبايل</span>',
+    heroTitleSolid: 'مطور',
+    heroTitleOutline: 'فلاتر',
+    heroBio:
+      '<strong>مطور تطبيقات فلاتر</strong> متخصص في بناء وتطوير تطبيقات عالية الأداء ومتعددة المنصات. شغوف بتطوير أنظمة برمجية جاهزة للإنتاج بالاعتماد على <strong>Clean Architecture</strong>، وإدارة الحالة بـ <strong>BLoC / Cubit</strong>، وتكامل قوي مع <strong>RESTful APIs</strong>. بكالوريوس في <strong>هندسة الحاسبات والاتصالات</strong>، <strong>جامعة المنصورة</strong> (تخرج يونيو 2026 · جيد جداً).',
+    stat1Lbl: 'تطبيقات مميزة',
+    stat2Sub: 'جامعة المنصورة',
+    stat3Title: 'متاح',
+    stat3Lbl: 'جاهز للعمل والفرص',
+    portraitTooltip: 'كود نظيف. واجهات سلسة. بلا أعذار.',
+    badgeText: 'متاح للفرص الوظيفية',
+    feature1Title: 'مهندس تطبيقات متعددة المنصات',
+    feature1Desc:
+      'من واجهات دقيقة بالبكسل لأنيميشن سلس 60 إطار بالثانية، ودمج قوي للـ APIs ومكتبات الـ Native على iOS و Android.',
+    feature2Title: 'معمارية نظيفة وقابلية للتوسع',
+    feature2Desc:
+      'فصل دقيق بين طبقات Presentation و Domain و Data بالاعتماد على مبادئ SOLID وحقن التبعيات GetIt لضمان قابلية الفحص والتوسع.',
+    arsenalTitleSolid: 'الترسانة',
+    arsenalTitleOutline: 'التقنية',
+    pillAll: 'الكل',
+    pillMobile: 'تطوير الموبايل',
+    pillArch: 'المعمارية وإدارة الحالة',
+    pillTools: 'الباك إند والأدوات',
+    phoneTag: 'تجربة ثلاثية الأبعاد',
+    phoneTitleSolid: 'المختبر',
+    phoneTitleOutline: 'التفاعلي 3D',
+    phoneSubtitle:
+      'اختر مشروعاً لمعاينته حياً على شاشة الهاتف، ثم اسحب الهاتف لتفحصه وتدويره في الفضاء ثلاثي الأبعاد.',
+    phoneExploreBtn: 'عرض دراسة الحالة',
+    projectsTitleSolid: 'المشاريع',
+    projectsTitleOutline: 'المميزة',
+    credsTitleSolid: 'الشهادات و',
+    credsTitleOutline: 'التدريب',
+    credsSubtitle:
+      'شهادات مهنية معتمدة، وتطوير تقني مستمر، وتدريب هندسي عملي مكثف.',
+    contactTitleSolid: 'تواصل',
+    contactTitleOutline: 'معي',
+    contactSubtitle:
+      'متاح للوظائف بدوام كامل، التعاقدات والمشاريع الحرة. أرسل رسالتك لتصلني فوراً.',
+    nameLabel: 'اسمك الكريم',
+    namePlaceholder: 'مثال: أحمد محمد',
+    emailLabel: 'بريدك الإلكتروني',
+    emailPlaceholder: 'name@example.com',
+    subjectLabel: 'الموضوع',
+    subjectPlaceholder: 'فرصة عمل / استفسار عن مشروع',
+    messageLabel: 'الرسالة',
+    messagePlaceholder:
+      'مرحباً أحمد، نود مناقشة تفاصيل مشروعك أو فرصة العمل...',
+    submitBtnText: 'إرسال الرسالة',
+    wipTag: 'قيد التطوير والتحديث (WIP)',
+    wipText:
+      'البورتفوليو قيد التجهيز والتطوير المستمر تمهيداً للإطلاق! جاري إضافة دراسات حالة موسعة وعروض حية إضافية. يسعدنا جداً مشاركتك لرأيك وملاحظاتك.',
+    wipCta: 'تواصل وأرسل ملاحظاتك عبر LinkedIn',
+    wipPillText: '🚧 قيد التطوير (WIP)',
+  },
+};
+
+/** Apply translations to elements with data-i18n attribute. */
+function applyI18nText(dict) {
+  const elements = document.querySelectorAll('[data-i18n]');
+  elements.forEach((el) => {
+    const key = el.getAttribute('data-i18n');
+    if (!dict[key]) {
+      return;
+    }
+    if (dict[key].includes('<')) {
+      el.innerHTML = dict[key];
+    } else {
+      el.textContent = dict[key];
+    }
+  });
+}
+
+/** Apply translations to form inputs and subtitles. */
+function applyFormI18n(dict) {
+  const nameInput = document.getElementById('contact-name');
+  const emailInput = document.getElementById('contact-email');
+  const subjectInput = document.getElementById('contact-subject');
+  const messageInput = document.getElementById('contact-message');
+  const submitText = document.getElementById('submitBtnText');
+  const credsSub = document.querySelector('#credentials .section-subtitle');
+  const contactSub = document.querySelector('#contact .section-subtitle');
+
+  if (nameInput) {
+    nameInput.placeholder = dict.namePlaceholder;
+  }
+  if (emailInput) {
+    emailInput.placeholder = dict.emailPlaceholder;
+  }
+  if (subjectInput) {
+    subjectInput.placeholder = dict.subjectPlaceholder;
+  }
+  if (messageInput) {
+    messageInput.placeholder = dict.messagePlaceholder;
+  }
+  if (submitText) {
+    submitText.textContent = dict.submitBtnText;
+  }
+  if (credsSub) {
+    credsSub.textContent = dict.credsSubtitle;
+  }
+  if (contactSub) {
+    contactSub.textContent = dict.contactSubtitle;
+  }
+}
+
+/** Set page language, direction, and text contents. */
+function setLanguage(lang) {
+  const targetLang = lang === 'ar' ? 'ar' : 'en';
+  const dict = I18N[targetLang];
+  document.documentElement.lang = targetLang;
+  document.documentElement.dir = targetLang === 'ar' ? 'rtl' : 'ltr';
+
+  const langBtnLabel = document.getElementById('langBtnLabel');
+  const navLangLabel = document.getElementById('navLangLabel');
+  if (langBtnLabel) {
+    langBtnLabel.textContent = dict.langLabel;
+  }
+  if (navLangLabel) {
+    navLangLabel.textContent = dict.langLabel;
+  }
+
+  applyI18nText(dict);
+  applyFormI18n(dict);
+
+  try {
+    localStorage.setItem('portfolio_lang', targetLang);
+  } catch (err) {
+    console.error('LocalStorage unavailable:', err);
+  }
+}
+
+/** Initialize language switcher button handlers. */
+function initLanguageSwitcher() {
+  const langBtn = document.getElementById('langToggleBtn');
+  const navLangBtn = document.getElementById('navLangToggleBtn');
+
+  const toggle = () => {
+    const current = document.documentElement.lang === 'ar' ? 'ar' : 'en';
+    const next = current === 'ar' ? 'en' : 'ar';
+    setLanguage(next);
+  };
+
+  if (langBtn) {
+    langBtn.addEventListener('click', toggle);
+  }
+  if (navLangBtn) {
+    navLangBtn.addEventListener('click', toggle);
+  }
+
+  let savedLang = 'en';
+  try {
+    savedLang = localStorage.getItem('portfolio_lang') || 'en';
+  } catch (err) {
+    console.error('Could not read saved lang:', err);
+  }
+
+  if (savedLang === 'ar') {
+    setLanguage('ar');
+  }
+}
+
+initLanguageSwitcher();
+
+
+// ==================== Floating WIP Window ====================
+
+/** Initialize Work In Progress notice minimize/expand controls. */
+function initWipBanner() {
+  const banner = document.getElementById('wipBanner');
+  const minimizeBtn = document.getElementById('wipMinimizeBtn');
+  const expandBtn = document.getElementById('wipExpandBtn');
+
+  if (!banner || !minimizeBtn || !expandBtn) {
+    return;
+  }
+
+  minimizeBtn.addEventListener('click', () => {
+    banner.classList.add('is-minimized');
+    try {
+      sessionStorage.setItem('wip_minimized', 'true');
+    } catch (err) {
+      console.error('SessionStorage unavailable:', err);
+    }
+  });
+
+  expandBtn.addEventListener('click', () => {
+    banner.classList.remove('is-minimized');
+    try {
+      sessionStorage.removeItem('wip_minimized');
+    } catch (err) {
+      console.error('SessionStorage unavailable:', err);
+    }
+  });
+
+  try {
+    if (sessionStorage.getItem('wip_minimized') === 'true') {
+      banner.classList.add('is-minimized');
+    }
+  } catch (err) {
+    console.error('SessionStorage unavailable:', err);
+  }
+}
+
+initWipBanner();
