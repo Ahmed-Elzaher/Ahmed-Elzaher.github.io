@@ -2223,3 +2223,192 @@ footer {
     font-size: 1.95rem;
   }
 }
+
+/* ==================== Floating Navigation Bar ==================== */
+.floating-nav {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-120%);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  padding: 0.35rem 0.4rem;
+  background: rgb(10 10 13 / 82%);
+  backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgb(255 255 255 / 9%);
+  border-radius: 999px;
+  box-shadow:
+    0 8px 32px rgb(0 0 0 / 55%),
+    0 0 0 1px rgb(255 255 255 / 3%),
+    inset 0 1px 0 rgb(255 255 255 / 6%);
+  opacity: 0;
+  transition:
+    transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.35s ease;
+  will-change: transform, opacity;
+}
+
+.floating-nav.is-visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.42rem 0.9rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color 0.22s ease,
+    background 0.22s ease;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--fg);
+  background: rgb(255 255 255 / 6%);
+}
+
+.nav-link.is-active {
+  color: #fff;
+  background: var(--accent);
+  box-shadow: 0 0 14px var(--accent-glow);
+}
+
+.nav-link.is-active:hover {
+  background: var(--accent-light);
+  color: #fff;
+}
+
+.nav-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    opacity 0.2s,
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-link.is-active .nav-dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (width <= 540px) {
+  .floating-nav {
+    gap: 0;
+    padding: 0.3rem;
+  }
+
+  .nav-link {
+    padding: 0.38rem 0.65rem;
+    font-size: 0.62rem;
+    gap: 0;
+  }
+
+  .nav-dot {
+    display: none;
+  }
+}
+
+@media (width <= 380px) {
+  .floating-nav {
+    top: 0.75rem;
+  }
+
+  .nav-link {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+/* ==================== Portrait Tooltip ==================== */
+.portrait-tooltip {
+  position: absolute;
+  top: -3.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px) scale(0.88);
+  background: var(--surface-card);
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  padding: 0.6rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--fg);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow:
+    0 10px 28px rgb(0 0 0 / 55%),
+    0 0 0 1px rgb(255 255 255 / 4%);
+  opacity: 0;
+  transition:
+    opacity 0.32s ease,
+    transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 20;
+}
+
+.portrait-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background: var(--surface-card);
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.portrait-tooltip-emoji {
+  margin-right: 0.3rem;
+}
+
+.portrait-wrapper:hover .portrait-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+/* ==================== Scroll Reveal Animations ==================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity, transform;
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal[style*="--delay"] {
+  transition-delay: var(--delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

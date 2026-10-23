@@ -72,9 +72,28 @@
     </div>
   </header>
 
+  <!-- ==================== Floating Navigation Bar ==================== -->
+  <nav class="floating-nav" id="floatingNav" aria-label="Page sections">
+    <a class="nav-link" data-section="about" href="#about">
+      <span class="nav-dot" aria-hidden="true"></span>About
+    </a>
+    <a class="nav-link" data-section="skills" href="#skills">
+      <span class="nav-dot" aria-hidden="true"></span>Skills
+    </a>
+    <a class="nav-link" data-section="projects" href="#projects">
+      <span class="nav-dot" aria-hidden="true"></span>Projects
+    </a>
+    <a class="nav-link" data-section="credentials" href="#credentials">
+      <span class="nav-dot" aria-hidden="true"></span>Creds
+    </a>
+    <a class="nav-link" data-section="contact" href="#contact">
+      <span class="nav-dot" aria-hidden="true"></span>Connect
+    </a>
+  </nav>
+
   <!-- ==================== Harmonious 2-Column Hero ==================== -->
   <main>
-    <div class="hero">
+    <div class="hero" id="about">
       <div class="hero-left">
         <div class="hero-label">
           <span>FLUTTER</span> · <span>CLEAN ARCHITECTURE</span> · <span>MOBILE</span>
@@ -111,6 +130,10 @@
       <!-- Right Column: Balanced Portrait Photo -->
       <div class="hero-right">
         <div class="portrait-wrapper">
+          <div class="portrait-tooltip" aria-hidden="true">
+            <span class="portrait-tooltip-emoji">💙</span>
+            Clean code. Smooth UIs. Zero excuses.
+          </div>
           <div class="portrait-card">
             <img src="photo.jpg" alt="Ahmed Elzaher Portrait" width="340" height="360">
           </div>

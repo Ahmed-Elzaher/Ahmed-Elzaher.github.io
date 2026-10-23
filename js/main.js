@@ -443,3 +443,111 @@ function initProjectModal() {
 }
 
 initProjectModal();
+
+// ==================== Floating Navigation Bar ====================
+
+/** Show/hide the nav pill based on whether the hero section is visible. */
+function observeNavVisibility(nav) {
+  const heroEl = document.getElementById('about');
+  if (!heroEl) {
+    return;
+  }
+  new IntersectionObserver(
+    ([entry]) => nav.classList.toggle('is-visible', !entry.isIntersecting),
+    { threshold: 0.15 }
+  ).observe(heroEl);
+}
+
+/** Highlight the nav link matching the currently-intersecting section. */
+function observeNavActive(sections, navLinks) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+        const { id } = entry.target;
+        navLinks.forEach((link) => {
+          link.classList.toggle('is-active', link.getAttribute('data-section') === id);
+        });
+      });
+    },
+    { threshold: 0.25, rootMargin: '-60px 0px -45% 0px' }
+  );
+  sections.forEach((s) => observer.observe(s.el));
+}
+
+/** Wire up the floating nav bar. */
+function initFloatingNav() {
+  const nav = document.getElementById('floatingNav');
+  if (!nav || !('IntersectionObserver' in window)) {
+    return;
+  }
+  const navLinks = nav.querySelectorAll('.nav-link');
+  const sections = ['about', 'skills', 'projects', 'credentials', 'contact']
+    .map((id) => ({ id, el: document.getElementById(id) }))
+    .filter((s) => s.el !== null);
+  observeNavVisibility(nav);
+  observeNavActive(sections, navLinks);
+}
+
+initFloatingNav();
+
+
+// ==================== Scroll Reveal ====================
+
+/** Add .reveal to target elements, then flip to .is-revealed on viewport entry. */
+function initScrollReveal() {
+  if (!('IntersectionObserver' in window)) {
+    return;
+  }
+
+  // Elements to reveal with optional stagger index
+  const revealTargets = [
+    // Section headings
+    { selector: '.section .section-head', stagger: false },
+    // Arsenal cards
+    { selector: '#arsenalGrid .arsenal-card', stagger: true },
+    // Feature cards
+    { selector: '.feature-cards .feature-card', stagger: true },
+    // Stat cards
+    { selector: '.stats-grid .stat-card', stagger: true },
+    // Project cards
+    { selector: '#projects .project-card', stagger: false },
+    // Credential cards
+    { selector: '.credentials-grid .credential-card', stagger: true },
+    // Contact section cards
+    { selector: '.contact-info-cards .contact-info-card', stagger: true },
+    // Contact form
+    { selector: '#contactForm', stagger: false },
+  ];
+
+  const allReveal = [];
+
+  revealTargets.forEach(({ selector, stagger }) => {
+    const els = document.querySelectorAll(selector);
+    els.forEach((el, idx) => {
+      el.classList.add('reveal');
+      if (stagger) {
+        el.style.setProperty('--delay', `${idx * 75}ms`);
+      }
+      allReveal.push(el);
+    });
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target); // reveal once
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  allReveal.forEach((el) => observer.observe(el));
+}
+
+initScrollReveal();
