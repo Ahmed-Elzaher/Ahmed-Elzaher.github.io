@@ -458,37 +458,60 @@ function observeNavVisibility(nav) {
   ).observe(heroEl);
 }
 
-/** Highlight the nav link matching the currently-intersecting section. */
-function observeNavActive(sections, navLinks) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-        const { id } = entry.target;
-        navLinks.forEach((link) => {
-          link.classList.toggle('is-active', link.getAttribute('data-section') === id);
-        });
-      });
+/** Highlight the nav link matching the current scroll position. */
+function initScrollSpy(navLinks) {
+  const targets = [
+    { el: document.getElementById('about'), navSection: 'about' },
+    { el: document.getElementById('skills'), navSection: 'skills' },
+    { el: document.getElementById('interactive-phone'), navSection: 'projects' },
+    { el: document.getElementById('projects'), navSection: 'projects' },
+    { el: document.getElementById('credentials'), navSection: 'credentials' },
+    { el: document.getElementById('contact'), navSection: 'contact' },
+  ].filter((t) => t.el !== null);
+
+  let ticking = false;
+
+  const updateActiveSection = () => {
+    const scrollPos = window.scrollY + 180;
+    let currentNav = 'about';
+
+    for (let i = 0; i < targets.length; i += 1) {
+      if (scrollPos >= targets[i].el.offsetTop - 50) {
+        currentNav = targets[i].navSection;
+      }
+    }
+
+    navLinks.forEach((link) => {
+      link.classList.toggle('is-active', link.getAttribute('data-section') === currentNav);
+    });
+
+    ticking = false;
+  };
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateActiveSection);
+        ticking = true;
+      }
     },
-    { threshold: 0.25, rootMargin: '-60px 0px -45% 0px' }
+    { passive: true }
   );
-  sections.forEach((s) => observer.observe(s.el));
+
+  window.addEventListener('hashchange', updateActiveSection);
+  updateActiveSection();
 }
 
 /** Wire up the floating nav bar. */
 function initFloatingNav() {
   const nav = document.getElementById('floatingNav');
-  if (!nav || !('IntersectionObserver' in window)) {
+  if (!nav) {
     return;
   }
   const navLinks = nav.querySelectorAll('.nav-link');
-  const sections = ['about', 'skills', 'projects', 'credentials', 'contact']
-    .map((id) => ({ id, el: document.getElementById(id) }))
-    .filter((s) => s.el !== null);
   observeNavVisibility(nav);
-  observeNavActive(sections, navLinks);
+  initScrollSpy(navLinks);
 }
 
 initFloatingNav();

@@ -60,7 +60,11 @@
     <div class="top-actions">
       <!-- Language Switcher Button -->
       <button class="lang-btn" id="langToggleBtn" type="button" aria-label="Toggle Language" title="تغيير اللغة / Change Language">
-        <span class="lang-icon" aria-hidden="true">🌐</span>
+        <svg class="lang-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
         <span class="lang-label" id="langBtnLabel">عربي</span>
       </button>
 
@@ -95,7 +99,12 @@
     <a class="nav-link" data-section="contact" href="#contact">
       <span class="nav-dot" aria-hidden="true"></span><span data-i18n="navConnect">Connect</span>
     </a>
-    <button class="nav-lang-btn" id="navLangToggleBtn" type="button" aria-label="Toggle language">
+    <button class="nav-lang-btn" id="navLangToggleBtn" type="button" aria-label="Toggle language" title="Change Language">
+      <svg class="nav-lang-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
       <span id="navLangLabel">عربي</span>
     </button>
   </nav>

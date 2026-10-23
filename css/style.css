@@ -2418,20 +2418,21 @@ footer {
 .lang-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.45rem 0.85rem;
+  gap: 0.45rem;
+  padding: 0.48rem 0.85rem;
   background: var(--surface);
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   color: var(--fg);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   cursor: pointer;
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
+    color 0.2s ease,
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
@@ -2439,6 +2440,7 @@ footer {
 .lang-btn:hover {
   background: var(--surface-card);
   border-color: var(--accent);
+  color: #fff;
   box-shadow: 0 0 12px var(--accent-glow);
   transform: translateY(-1px);
 }
@@ -2447,25 +2449,30 @@ footer {
   transform: translateY(0) scale(0.96);
 }
 
-.lang-icon {
-  font-size: 0.85rem;
-  line-height: 1;
+.lang-icon-svg {
+  flex-shrink: 0;
+  color: var(--accent-light);
+  transition: transform 0.3s ease;
+}
+
+.lang-btn:hover .lang-icon-svg {
+  transform: rotate(20deg);
 }
 
 .nav-lang-btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.3rem;
   padding: 0.35rem 0.65rem;
-  background: transparent;
+  background: rgb(255 255 255 / 4%);
   border: 1px solid rgb(255 255 255 / 12%);
   border-radius: 999px;
-  color: var(--fg);
+  color: var(--muted);
   font-family: var(--font-mono);
   font-size: 0.65rem;
   font-weight: 700;
   cursor: pointer;
-  margin-inline-start: 0.2rem;
+  margin-inline-start: 0.25rem;
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
@@ -2476,6 +2483,10 @@ footer {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
+}
+
+.nav-lang-svg {
+  flex-shrink: 0;
 }
 
 /* ==================== RTL (Arabic) Adjustments ==================== */
