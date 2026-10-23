@@ -204,11 +204,7 @@ const PROJECTS_DATA = {
     githubUrl: 'https://github.com/Ahmed-Elzaher/engipedia',
     playStoreUrl: null,
     isPlayStoreDisabled: false,
-    screenshots: [
-      { url: 'screens/engipedia/home.jpg', label: 'Dashboard & Departments' },
-      { url: 'screens/engipedia/courses.jpg', label: 'Course Lectures & Materials' },
-      { url: 'screens/engipedia/activity.jpg', label: 'Recent Activity & Progress' },
-    ],
+    screenshots: [],
     architecture: [
       {
         name: 'Clean Architecture + MVVM',
@@ -258,6 +254,10 @@ function renderPlayButton(data) {
 }
 
 function renderGallery(screenshots) {
+  if (!screenshots || screenshots.length === 0) {
+    return '';
+  }
+
   const thumbsHtml = screenshots.map((s, idx) => `
     <button type="button" class="modal-thumb ${idx === 0 ? 'is-active' : ''}" data-idx="${idx}">
       ${s.label}
@@ -266,7 +266,7 @@ function renderGallery(screenshots) {
 
   return `
     <div class="modal-gallery">
-      <h3 class="modal-section-title">App Interface & Walkthrough</h3>
+      <h3 class="modal-section-title">App Interface &amp; Walkthrough</h3>
       <div class="modal-gallery-stage">
         <img class="modal-gallery-img" id="modalStageImg" src="${screenshots[0].url}" alt="${screenshots[0].label}">
       </div>
@@ -847,7 +847,10 @@ function initWipBanner() {
   });
 
   try {
-    if (sessionStorage.getItem('wip_minimized') === 'true') {
+    // Auto-minimize on mobile; restore user preference on desktop
+    const isMobile = window.matchMedia('(width <= 540px)').matches;
+    const wasMinimized = sessionStorage.getItem('wip_minimized') === 'true';
+    if (isMobile || wasMinimized) {
       banner.classList.add('is-minimized');
     }
   } catch (err) {

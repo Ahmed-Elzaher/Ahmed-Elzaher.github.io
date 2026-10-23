@@ -130,12 +130,7 @@
         phoneImgs.matchin = imgMatchIn;
         if (current === 'matchin') { drawScreen('matchin'); }
       };
-      var imgEngipedia = new Image();
-      imgEngipedia.src = 'screens/engipedia/home.jpg';
-      imgEngipedia.onload = function () {
-        phoneImgs.engipedia = imgEngipedia;
-        if (current === 'engipedia') { drawScreen('engipedia'); }
-      };
+
       function rr(x, y, w, h, r) {
         g.beginPath(); g.moveTo(x + r, y);
         g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r);
