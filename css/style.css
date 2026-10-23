@@ -830,51 +830,6 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   letter-spacing: 0.03em;
 }
 
-/* ==================== Dart Code Snippet Card ==================== */
-.dart-box {
-  background: #08080c;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  overflow: hidden;
-  font-family: var(--font-mono);
-  margin-top: 2rem;
-}
-
-.dart-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 1.25rem;
-  background: rgba(255, 255, 255, 0.02);
-  border-bottom: 1px solid var(--line);
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-
-.dart-dots {
-  display: flex;
-  gap: 6px;
-}
-
-.dart-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.dart-code {
-  padding: 1.25rem;
-  font-size: 0.85rem;
-  line-height: 1.7;
-  overflow-x: auto;
-  color: #cbd5e1;
-}
-
-.k { color: #3b82f6; font-weight: 600; }
-.s { color: #60a5fa; }
-.c { color: #71717a; font-style: italic; }
-
 /* ==================== Interactive 3D Phone Showcase ==================== */
 .showcase {
   display: grid;
@@ -1526,7 +1481,12 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
 }
 
 .form-spinner {
+  display: inline-block;
   animation: spin-it 0.9s linear infinite;
+}
+
+.form-spinner[hidden] {
+  display: none;
 }
 
 @keyframes spin-it {
@@ -2576,6 +2536,41 @@ html[dir="rtl"] .footer-meta {
   direction: rtl;
 }
 
+html[dir="rtl"] .project-contributions h4 {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] .project-contributions li {
+  padding-left: 0;
+  padding-right: 1.25rem;
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] .project-contributions li::before {
+  left: auto;
+  right: 0;
+  content: "◂";
+}
+
+html[dir="rtl"] .project-desc {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] .project-info {
+  text-align: right;
+}
+
+html[dir="rtl"] .project-tag-row {
+  justify-content: flex-start;
+}
+
+html[dir="rtl"] .project-actions {
+  justify-content: flex-start;
+}
+
 /* ==================== Floating WIP Window (Work In Progress) ==================== */
 .wip-banner {
   position: fixed;
@@ -2771,5 +2766,185 @@ html[dir="rtl"] .footer-meta {
   .wip-banner-inner,
   .wip-pulse {
     animation: none;
+  }
+}
+
+/* ==================== Private Owner Dashboard Modal ==================== */
+.admin-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.admin-modal.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.admin-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 80%);
+  backdrop-filter: blur(14px);
+}
+
+.admin-modal-dialog {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 640px;
+  max-height: 88vh;
+  overflow-y: auto;
+  background: #0d0f14;
+  border: 1px solid rgb(45 104 255 / 35%);
+  border-radius: 20px;
+  padding: 1.75rem;
+  box-shadow:
+    0 24px 60px rgb(0 0 0 / 80%),
+    0 0 40px rgb(45 104 255 / 15%);
+}
+
+.admin-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.admin-header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admin-shield-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgb(45 104 255 / 15%);
+  border: 1px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-light);
+}
+
+.admin-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #22c55e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin: 1.25rem 0;
+}
+
+.admin-stat-card {
+  background: rgb(255 255 255 / 2%);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.admin-stat-lbl {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.admin-stat-val {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.admin-stat-sub {
+  font-size: 0.68rem;
+  color: var(--dim);
+}
+
+.admin-section {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.admin-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.admin-changelog {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.changelog-item {
+  display: flex;
+  gap: 0.85rem;
+  padding: 0.75rem 0.9rem;
+  background: rgb(255 255 255 / 2%);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.changelog-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-light);
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.changelog-text {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.admin-footer-note {
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  background: rgb(45 104 255 / 8%);
+  border: 1px solid rgb(45 104 255 / 20%);
+  border-radius: 10px;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.admin-footer-note kbd {
+  background: #181920;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  padding: 0.15rem 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #fff;
+}
+
+@media (width <= 600px) {
+  .admin-stats-grid {
+    grid-template-columns: 1fr;
   }
 }

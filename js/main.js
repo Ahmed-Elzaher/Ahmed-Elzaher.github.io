@@ -618,6 +618,28 @@ const I18N = {
     phoneExploreBtn: 'Explore Case Study',
     projectsTitleSolid: 'FEATURED',
     projectsTitleOutline: 'PROJECTS',
+    matchinTag: 'AI CAREER PLATFORM',
+    matchinTeamTag: 'Team Project',
+    matchinDesc:
+      'An AI-powered recruitment ecosystem that parses candidate CVs, analyzes technical skills against live job listings, and calculates match scores with tailored roadmaps to bridge skill gaps.',
+    contributionsHeading: 'My Key Contributions:',
+    matchinContrib1:
+      '<b>Authentication Engine:</b> Engineered complete auth flow (Login, Register, OTP verification, Password Reset & Google Sign-In).',
+    matchinContrib2:
+      '<b>Saved & Tracking:</b> Built real-time job bookmarking and live status tracking for submitted applications.',
+    caseStudyBtn: 'Case Study & Details',
+    engipediaTag: 'DIGITAL LEARNING HUB',
+    engipediaTeamTag: 'Lead Mobile Developer',
+    engipediaDesc:
+      'A centralized study app for Communication and Computer Engineering students at Mansoura University. Organizes lectures, summaries, and past exams by course and professor, eliminating scattered files.',
+    engipediaCredit:
+      'UI/UX design by <a href="https://www.linkedin.com/in/zeyad-elsharawey-0b6bb7332/" target="_blank" rel="noopener" style="color: var(--muted); text-decoration: underline; text-underline-offset: 3px;">Zeyad Khaled Mohamed</a>.',
+    engipediaContrib1:
+      '<b>Figma to Code:</b> Translated complex UI designs into responsive, pixel-accurate Flutter components.',
+    engipediaContrib2:
+      '<b>Scalable Architecture:</b> Architected the mobile client with Clean Architecture + MVVM for easy feature expansion.',
+    engipediaContrib3:
+      '<b>Core Features:</b> Built smart course search, progress tracking, and an integrated PDF reader.',
     credsTitleSolid: 'CREDENTIALS &',
     credsTitleOutline: 'TRAINING',
     credsSubtitle:
@@ -682,6 +704,28 @@ const I18N = {
     phoneExploreBtn: 'عرض دراسة الحالة',
     projectsTitleSolid: 'المشاريع',
     projectsTitleOutline: 'المميزة',
+    matchinTag: 'منصة مهنية ذكية',
+    matchinTeamTag: 'مشروع جماعي',
+    matchinDesc:
+      'نظام توظيف وتطوير وظيفي مدعوم بالذكاء الاصطناعي، يحلل السير الذاتية، ويطابق المهارات التقنية مع الوظائف المتاحة بدقة، ويبني خرائط طريق مخصصة لسد الفجوات المهارية.',
+    contributionsHeading: 'أبرز إسهاماتي الهندسية:',
+    matchinContrib1:
+      '<b>محرك المصادقة والحسابات:</b> بناء وتطوير مسار المصادقة بالكامل (تسجيل الدخول، إنشاء الحساب، التحقق برمز OTP، استعادة كلمة المرور، وربط Google Sign-In).',
+    matchinContrib2:
+      '<b>المفضلة والمتابعة:</b> تطوير نظام متزامن لحفظ الوظائف ومتابعة حالات التقديم بشكل فوري.',
+    caseStudyBtn: 'تفاصيل ودراسة الحالة',
+    engipediaTag: 'منصة تعليمية هندسية',
+    engipediaTeamTag: 'مطور الموبايل الرئيسي',
+    engipediaDesc:
+      'تطبيق دراسي متكامل لطلاب هندسة الحاسبات والاتصالات بجامعة المنصورة، ينظم المحاضرات والملخصات والامتحانات السابقة حسب المادة وعضو هيئة التدريس لمنع تشتت الملفات.',
+    engipediaCredit:
+      'تصميم واجهات المستخدم (UI/UX) بواسطة <a href="https://www.linkedin.com/in/zeyad-elsharawey-0b6bb7332/" target="_blank" rel="noopener" style="color: var(--muted); text-decoration: underline; text-underline-offset: 3px;">زياد خالد محمد</a>.',
+    engipediaContrib1:
+      '<b>تحويل التصميم إلى كود:</b> تحويل تصميمات Figma بدقة تامة ومطابقة للبكسل إلى واجهات Flutter متجاوبة وسلسة.',
+    engipediaContrib2:
+      '<b>معمارية برمجية قابلة للتوسع:</b> بناء التطبيق بالاعتماد على Clean Architecture + MVVM لسهولة إضافة وتطوير الميزات.',
+    engipediaContrib3:
+      '<b>الميزات الجوهرية:</b> تطوير البحث الذكي في المواد، نظام تتبع التقدم الدراسي، وقارئ ملفات PDF مدمج.',
     credsTitleSolid: 'الشهادات و',
     credsTitleOutline: 'التدريب',
     credsSubtitle:
@@ -859,3 +903,151 @@ function initWipBanner() {
 }
 
 initWipBanner();
+
+
+// ==================== Private Owner Dashboard & Analytics ====================
+
+const SITE_CHANGELOG = [
+  {
+    date: '23 Oct 2026',
+    title: 'Mobile Optimization & Live Polish',
+    desc: 'Enhanced responsive layouts, eliminated redundant code blocks, refined typography, and resolved specificity rules.',
+  },
+  {
+    date: '23 Oct 2026',
+    title: 'Bilingual Support (Arabic & English)',
+    desc: 'Added instant bilingual switcher, RTL layout adaptations, and interactive tooltips.',
+  },
+  {
+    date: '22 Oct 2026',
+    title: 'Interactive 3D Phone & Case Studies',
+    desc: 'Integrated interactive Three.js 3D mobile preview, dynamic screen mapping, and full-screen project modals.',
+  },
+  {
+    date: '21 Oct 2026',
+    title: 'Design System & Architecture',
+    desc: 'Structured clean OLED dark theme, JetBrains Mono tags, and verified mobile project architecture.',
+  },
+];
+
+/** Tracks visitor count silently via CountAPI and local storage. */
+async function trackOwnerVisits(localVisits, totalVisitsEl) {
+  const NAMESPACE = 'ahmed-elzaher-portfolio-2026';
+  const KEY = 'site_visits';
+  try {
+    const res = await fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`);
+    if (res.ok) {
+      const data = await res.json();
+      if (totalVisitsEl) {
+        totalVisitsEl.textContent = data.value.toLocaleString();
+      }
+    }
+  } catch (err) {
+    console.error('CountAPI unavailable:', err);
+    if (totalVisitsEl) {
+      totalVisitsEl.textContent = Math.max(localVisits, 1).toString();
+    }
+  }
+}
+
+/** Attaches keyboard and secret click listeners to toggle dashboard. */
+function wireDashboardTriggers(modal, triggerDot, handlers) {
+  let clickCount = 0;
+  let clickTimer = null;
+
+  if (triggerDot) {
+    triggerDot.addEventListener('click', () => {
+      clickCount += 1;
+      clearTimeout(clickTimer);
+      if (clickCount >= 3) {
+        clickCount = 0;
+        handlers.open();
+      } else {
+        clickTimer = setTimeout(() => {
+          clickCount = 0;
+        }, 500);
+      }
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+      e.preventDefault();
+      if (modal.classList.contains('is-active')) {
+        handlers.close();
+      } else {
+        handlers.open();
+      }
+    } else if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+      handlers.close();
+    }
+  });
+}
+
+/** Renders the changelog entries into the container. */
+function renderChangelog(container) {
+  if (!container) {
+    return;
+  }
+  container.innerHTML = SITE_CHANGELOG.map((item) => `
+    <div class="changelog-item">
+      <span class="changelog-date">${item.date}</span>
+      <div class="changelog-text">
+        <strong style="color: #fff; display: block; margin-bottom: 0.15rem;">${item.title}</strong>
+        <span>${item.desc}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+/** Reads and updates the local owner visits counter. */
+function updateLocalOwnerVisits(localVisitsEl) {
+  let localVisits = 1;
+  try {
+    localVisits = parseInt(localStorage.getItem('ae_owner_local_visits') || '0', 10) + 1;
+    localStorage.setItem('ae_owner_local_visits', localVisits.toString());
+  } catch (err) {
+    console.error('LocalStorage unavailable:', err);
+  }
+  if (localVisitsEl) {
+    localVisitsEl.textContent = localVisits.toLocaleString();
+  }
+  return localVisits;
+}
+
+/** Tracks visitor count and provides owner secret access. */
+function initOwnerDashboard() {
+  const modal = document.getElementById('adminModal');
+  const triggerDot = document.getElementById('ownerSecretTrigger');
+  const lastVisitEl = document.getElementById('adminLastVisit');
+
+  if (!modal) {
+    return;
+  }
+
+  const localVisits = updateLocalOwnerVisits(document.getElementById('adminLocalVisits'));
+  trackOwnerVisits(localVisits, document.getElementById('adminTotalVisits'));
+  renderChangelog(document.getElementById('adminChangelog'));
+
+  const handlers = {
+    open: () => {
+      modal.classList.add('is-active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (lastVisitEl) {
+        lastVisitEl.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      }
+    },
+    close: () => {
+      modal.classList.remove('is-active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    },
+  };
+
+  document.getElementById('adminCloseBtn')?.addEventListener('click', handlers.close);
+  document.getElementById('adminBackdrop')?.addEventListener('click', handlers.close);
+  wireDashboardTriggers(modal, triggerDot, handlers);
+}
+
+initOwnerDashboard();
