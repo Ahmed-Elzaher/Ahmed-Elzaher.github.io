@@ -663,6 +663,9 @@ const I18N = {
     serv5Date: 'Issued Jul 23, 2026',
     serv5Title: 'Flutter Intern Training',
     serv5Org: 'Serv5 · Overall evaluation: Very Good',
+    pdfFileBadge: 'PDF file',
+    pdfCertificateTitle: 'Additional Certificate',
+    openCertificatePdf: 'Open certificate PDF',
     contactTitleSolid: 'GET IN',
     contactTitleOutline: 'TOUCH',
     contactSubtitle:
@@ -768,6 +771,9 @@ const I18N = {
     serv5Date: 'تاريخ الإصدار: ٢٣ يوليو ٢٠٢٦',
     serv5Title: 'تدريب Flutter Intern',
     serv5Org: 'Serv5 · التقييم العام: جيد جداً',
+    pdfFileBadge: 'ملف PDF',
+    pdfCertificateTitle: 'شهادة إضافية',
+    openCertificatePdf: 'افتح ملف الشهادة PDF',
     contactTitleSolid: 'تواصل',
     contactTitleOutline: 'معي',
     contactSubtitle:

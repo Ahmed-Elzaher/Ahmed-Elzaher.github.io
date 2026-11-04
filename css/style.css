@@ -1649,6 +1649,22 @@ footer {
   transform: scale(1.025);
 }
 
+.certificate-pdf-link {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.certificate-pdf-link:hover {
+  border-color: var(--accent);
+  background: var(--surface-hover);
+}
+
 .credential-card:hover {
   background: var(--surface-hover);
   border-color: rgb(45 104 255 / 35%);
