@@ -953,6 +953,16 @@ initWipBanner();
 
 const SITE_CHANGELOG = [
   {
+    date: '4 Nov 2026',
+    title: 'Unique Visitor Analytics',
+    desc: 'Replaced per-load visit counting with unique visitor counting and removed the per-browser session total.',
+  },
+  {
+    date: '4 Nov 2026',
+    title: 'Certificates Updated',
+    desc: 'Added the NTI Mobile App Development certificate and arranged NTI and Serv5 as the first two training certificates.',
+  },
+  {
     date: '23 Oct 2026',
     title: 'Mobile Optimization & Live Polish',
     desc: 'Enhanced responsive layouts, eliminated redundant code blocks, refined typography, and resolved specificity rules.',
@@ -974,22 +984,24 @@ const SITE_CHANGELOG = [
   },
 ];
 
-/** Tracks visitor count silently via CountAPI and local storage. */
-async function trackOwnerVisits(localVisits, totalVisitsEl) {
-  const NAMESPACE = 'ahmed-elzaher-portfolio-2026';
-  const KEY = 'site_visits';
+/** Counts unique visitors through CounterAPI's anonymized visitor identity. */
+async function trackUniqueVisitors(totalVisitorsEl) {
+  const NAMESPACE = 'ahmed-elzaher.github.io';
+  const KEY = 'unique-visitors-v1';
   try {
-    const res = await fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`);
+    const res = await fetch(
+      `https://counterapi.com/api/${NAMESPACE}/view/${KEY}?unique=true`
+    );
     if (res.ok) {
       const data = await res.json();
-      if (totalVisitsEl) {
-        totalVisitsEl.textContent = data.value.toLocaleString();
+      if (totalVisitorsEl && Number.isFinite(data.value)) {
+        totalVisitorsEl.textContent = data.value.toLocaleString();
       }
     }
   } catch (err) {
-    console.error('CountAPI unavailable:', err);
-    if (totalVisitsEl) {
-      totalVisitsEl.textContent = Math.max(localVisits, 1).toString();
+    console.error('Unique visitor counter unavailable:', err);
+    if (totalVisitorsEl) {
+      totalVisitorsEl.textContent = '—';
     }
   }
 }
@@ -1044,21 +1056,6 @@ function renderChangelog(container) {
   `).join('');
 }
 
-/** Reads and updates the local owner visits counter. */
-function updateLocalOwnerVisits(localVisitsEl) {
-  let localVisits = 1;
-  try {
-    localVisits = parseInt(localStorage.getItem('ae_owner_local_visits') || '0', 10) + 1;
-    localStorage.setItem('ae_owner_local_visits', localVisits.toString());
-  } catch (err) {
-    console.error('LocalStorage unavailable:', err);
-  }
-  if (localVisitsEl) {
-    localVisitsEl.textContent = localVisits.toLocaleString();
-  }
-  return localVisits;
-}
-
 /** Tracks visitor count and provides owner secret access. */
 function initOwnerDashboard() {
   const modal = document.getElementById('adminModal');
@@ -1069,8 +1066,7 @@ function initOwnerDashboard() {
     return;
   }
 
-  const localVisits = updateLocalOwnerVisits(document.getElementById('adminLocalVisits'));
-  trackOwnerVisits(localVisits, document.getElementById('adminTotalVisits'));
+  trackUniqueVisitors(document.getElementById('adminUniqueVisitors'));
   renderChangelog(document.getElementById('adminChangelog'));
 
   const handlers = {
