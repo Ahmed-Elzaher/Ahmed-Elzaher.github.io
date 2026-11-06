@@ -87,14 +87,17 @@
     <a class="nav-link" data-section="about" href="#about">
       <span class="nav-dot" aria-hidden="true"></span><span data-i18n="navAbout">About</span>
     </a>
+    <a class="nav-link" data-section="education" href="#education">
+      <span class="nav-dot" aria-hidden="true"></span><span data-i18n="navEducation">Education</span>
+    </a>
     <a class="nav-link" data-section="skills" href="#skills">
       <span class="nav-dot" aria-hidden="true"></span><span data-i18n="navSkills">Skills</span>
     </a>
+    <a class="nav-link" data-section="experience" href="#experience">
+      <span class="nav-dot" aria-hidden="true"></span><span data-i18n="navExperience">Experience</span>
+    </a>
     <a class="nav-link" data-section="projects" href="#projects">
       <span class="nav-dot" aria-hidden="true"></span><span data-i18n="navProjects">Projects</span>
-    </a>
-    <a class="nav-link" data-section="credentials" href="#credentials">
-      <span class="nav-dot" aria-hidden="true"></span><span data-i18n="navCreds">Creds</span>
     </a>
     <a class="nav-link" data-section="contact" href="#contact">
       <span class="nav-dot" aria-hidden="true"></span><span data-i18n="navConnect">Connect</span>
@@ -113,10 +116,6 @@
   <main>
     <div class="hero" id="about">
       <div class="hero-left">
-        <div class="hero-label" data-i18n="heroLabel">
-          <span>FLUTTER</span> · <span>CLEAN ARCHITECTURE</span> · <span>MOBILE</span>
-        </div>
-
         <h1 class="hero-title">
           <span class="solid" data-i18n="heroTitleSolid">FLUTTER</span>
           <span class="outline" data-i18n="heroTitleOutline">DEVELOPER</span>
@@ -136,22 +135,12 @@
             <div class="stat-val">CCE '26</div>
             <div class="stat-lbl" data-i18n="stat2Sub">Mansoura University</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-val status">
-              <span class="pulse-dot" style="margin-right: 4px;"></span> <span data-i18n="stat3Title">OPEN</span>
-            </div>
-            <div class="stat-lbl" data-i18n="stat3Lbl">Available For Hire</div>
-          </div>
         </div>
       </div>
 
       <!-- Right Column: Balanced Portrait Photo -->
       <div class="hero-right">
         <div class="portrait-wrapper">
-          <div class="portrait-tooltip" id="portraitTooltip" aria-hidden="true">
-            <span class="portrait-tooltip-emoji">💙</span>
-            <span data-i18n="portraitTooltip">Clean code. Smooth UIs. Zero excuses.</span>
-          </div>
           <div class="portrait-card">
             <img src="photo.jpg" alt="Ahmed Elzaher Portrait" width="340" height="360">
           </div>
@@ -163,35 +152,39 @@
       </div>
     </div>
 
-    <!-- Specialty Feature Cards -->
-    <div class="feature-cards">
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-        </div>
-        <div class="feature-info">
-          <h3 data-i18n="feature1Title">Cross-Platform Mobile Engineer</h3>
-          <p data-i18n="feature1Desc">From pixel-perfect UI implementation to smooth 60fps animations, delivering unified iOS & Android experiences.</p>
-        </div>
+    <!-- ==================== Academic Education ==================== -->
+    <section class="section" id="education">
+      <div class="section-head">
+        <h2 class="sec-title">
+          <span class="solid" data-i18n="educationTitleSolid">ACADEMIC</span>
+          <span class="outline" data-i18n="educationTitleOutline">EDUCATION</span>
+        </h2>
+        <p class="section-subtitle" data-i18n="educationSubtitle">Academic background and formal engineering foundation.</p>
       </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-        </div>
-        <div class="feature-info">
-          <h3 data-i18n="feature2Title">Clean Architecture & Scalability</h3>
-          <p data-i18n="feature2Desc">Strict decoupling between Presentation, Domain, and Data layers with SOLID principles and Dependency Injection.</p>
-        </div>
+      <div class="education-grid">
+        <article class="credential-card education-card-featured">
+          <div class="card-meta">
+            <span class="card-badge" data-i18n="degreeBadge">Bachelor's Degree</span>
+            <span class="card-date" data-i18n="degreeDate">Graduated June 2026</span>
+          </div>
+          <h3 class="card-title" data-i18n="degreeTitle">B.Sc. in Communication & Computer Engineering</h3>
+          <p class="card-org" data-i18n="degreeOrg">Mansoura University · Grade: Very Good</p>
+          <p class="card-desc" data-i18n="degreeDesc">Engineering degree in Communication and Computer Engineering.</p>
+          <div class="card-tags">
+            <span>Computer Engineering</span>
+            <span>Communications</span>
+          </div>
+        </article>
       </div>
-    </div>
+    </section>
 
-    <!-- ==================== Technical Arsenal (Skills) ==================== -->
+    <!-- ==================== Technical Skills ==================== -->
     <section class="section" id="skills">
       <div class="section-head">
         <h2 class="sec-title">
           <span class="solid" data-i18n="arsenalTitleSolid">TECHNICAL</span>
-          <span class="outline" data-i18n="arsenalTitleOutline">ARSENAL</span>
+          <span class="outline" data-i18n="arsenalTitleOutline">SKILLS</span>
         </h2>
       </div>
 
@@ -350,6 +343,69 @@
           <span class="arsenal-badge">SQLite & Hive</span>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ==================== Work Experience & Training ==================== -->
+    <section class="section" id="experience">
+      <div class="section-head">
+        <h2 class="sec-title">
+          <span class="solid" data-i18n="expTitleSolid">WORK &</span>
+          <span class="outline" data-i18n="expTitleOutline">EXPERIENCE</span>
+        </h2>
+        <p class="section-subtitle" data-i18n="expSubtitle">Professional internships, intensive training, and verified engineering credentials.</p>
+      </div>
+
+      <div class="experience-grid">
+        <article class="credential-card">
+          <a class="credential-image-link" href="assets/serv5-flutter.png" target="_blank" rel="noopener" aria-label="Open Serv5 Flutter training certificate">
+            <img class="credential-image" src="assets/serv5-flutter.png" alt="Serv5 Flutter intern training certificate" loading="lazy" width="1600" height="1120">
+          </a>
+          <div class="card-meta">
+            <span class="card-badge experience-badge" data-i18n="internshipBadge">Internship & Training</span>
+            <span class="card-date" data-i18n="serv5Date">Issued Jul 23, 2026</span>
+          </div>
+          <h3 class="card-title" data-i18n="serv5Title">Flutter Intern Training</h3>
+          <p class="card-org" data-i18n="serv5Org">Serv5 · Overall evaluation: Very Good</p>
+          <p class="card-desc" data-i18n="serv5Desc">Hands-on industrial Flutter development, state management, REST API integration, and clean code workflows.</p>
+        </article>
+
+        <article class="credential-card">
+          <a class="credential-image-link" href="assets/nti%20flutter.png" target="_blank" rel="noopener" aria-label="Open NTI Mobile App Development certificate">
+            <img class="credential-image" src="assets/nti%20flutter.png" alt="NTI Digital Egypt Youth Program certificate for Mobile App Development" loading="lazy">
+          </a>
+          <div class="card-meta">
+            <span class="card-badge verified" data-i18n="certBadge">Certificate</span>
+            <span class="card-date" data-i18n="ntiDate">Nov 27, 2025–Feb 7, 2026 · 90 technical hours</span>
+          </div>
+          <h3 class="card-title" data-i18n="ntiTitle">Mobile App Development</h3>
+          <p class="card-org" data-i18n="ntiOrg">NTI · Digital Egypt Youth · Creativa</p>
+          <p class="card-desc" data-i18n="ntiDesc">Intensive mobile engineering program focused on cross-platform Flutter development and architectural patterns.</p>
+        </article>
+
+        <article class="credential-card">
+          <a class="credential-image-link" href="assets/data-science-ml.jpeg" target="_blank" rel="noopener" aria-label="Open Data Science and Machine Learning certificate">
+            <img class="credential-image" src="assets/data-science-ml.jpeg" alt="Data Science and Machine Learning certificate from Egyptian Banking Institute" loading="lazy" width="1080" height="720">
+          </a>
+          <div class="card-meta">
+            <span class="card-badge verified" data-i18n="certBadge">Certificate</span>
+            <span class="card-date" data-i18n="dataScienceDate">Sep 14–25, 2025 · 80 hours</span>
+          </div>
+          <h3 class="card-title" data-i18n="dataScienceTitle">Data Science and Machine Learning (AI)</h3>
+          <p class="card-org" data-i18n="dataScienceOrg">Egyptian Banking Institute · Beit Al Zakat wa Al Sadaqat Al Masry</p>
+        </article>
+
+        <article class="credential-card">
+          <a class="credential-image-link" href="assets/huawei-hcia-ai.jpeg" target="_blank" rel="noopener" aria-label="Open Huawei HCIA-AI certificate">
+            <img class="credential-image" src="assets/huawei-hcia-ai.jpeg" alt="Huawei HCIA-AI course certificate" loading="lazy" width="1600" height="1120">
+          </a>
+          <div class="card-meta">
+            <span class="card-badge verified" data-i18n="certBadge">Certificate</span>
+            <span class="card-date" data-i18n="huaweiDate">Jul 20–Aug 28, 2024</span>
+          </div>
+          <h3 class="card-title" data-i18n="huaweiTitle">Huawei HCIA-AI Course</h3>
+          <p class="card-org" data-i18n="huaweiOrg">Huawei · Faculty of Engineering, Mansoura University</p>
+        </article>
       </div>
     </section>
 
@@ -541,94 +597,6 @@
       </article>
     </section>
 
-    <!-- ==================== Education ==================== -->
-    <section class="section" id="credentials">
-      <div class="section-head">
-        <h2 class="sec-title">
-          <span class="solid" data-i18n="credsTitleSolid">EDUCATION &</span>
-          <span class="outline" data-i18n="credsTitleOutline">CREDENTIALS</span>
-        </h2>
-        <p class="section-subtitle" data-i18n="credsSubtitle">Academic background and verified professional credentials.</p>
-      </div>
-
-      <div class="credentials-grid">
-        <!-- Academic background -->
-        <div class="credential-panel">
-          <div class="panel-header">
-            <div class="panel-icon">
-              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            </div>
-            <div>
-              <h3 class="panel-title" data-i18n="educationPanelTitle">Education</h3>
-              <span class="panel-subtitle" data-i18n="educationPanelSubtitle">Academic background</span>
-            </div>
-          </div>
-
-          <div class="credential-cards">
-            <article class="credential-card">
-              <div class="card-meta">
-                <span class="card-badge" data-i18n="degreeBadge">Bachelor's Degree</span>
-                <span class="card-date" data-i18n="degreeDate">Graduated June 2026</span>
-              </div>
-              <h4 class="card-title" data-i18n="degreeTitle">B.Sc. in Communication & Computer Engineering</h4>
-              <p class="card-org" data-i18n="degreeOrg">Mansoura University · Grade: Very Good</p>
-              <p class="card-desc" data-i18n="degreeDesc">Engineering degree in Communication and Computer Engineering.</p>
-              <div class="card-tags">
-                <span>Computer Engineering</span>
-                <span>Communications</span>
-              </div>
-            </article>
-
-          </div>
-        </div>
-        <div class="credential-panel">
-          <div class="panel-header">
-            <div class="panel-icon" aria-hidden="true">
-              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-            </div>
-            <div>
-              <h3 class="panel-title" data-i18n="certificationsPanelTitle">Certificates & Training</h3>
-              <span class="panel-subtitle" data-i18n="certificationsPanelSubtitle">Completed programs</span>
-            </div>
-          </div>
-          <div class="credential-cards">
-            <article class="credential-card">
-              <a class="credential-image-link" href="assets/nti%20flutter.png" target="_blank" rel="noopener" aria-label="Open NTI Mobile App Development certificate">
-                <img class="credential-image" src="assets/nti%20flutter.png" alt="NTI Digital Egypt Youth Program certificate for Mobile App Development" loading="lazy">
-              </a>
-              <div class="card-meta"><span class="card-badge verified" data-i18n="certBadge">Certificate</span><span class="card-date" data-i18n="ntiDate">Nov 27, 2025–Feb 7, 2026 · 90 technical hours</span></div>
-              <h4 class="card-title" data-i18n="ntiTitle">Mobile App Development</h4>
-              <p class="card-org" data-i18n="ntiOrg">NTI · Digital Egypt Youth · Creativa</p>
-            </article>
-            <article class="credential-card">
-              <a class="credential-image-link" href="assets/serv5-flutter.png" target="_blank" rel="noopener" aria-label="Open Serv5 Flutter training certificate">
-                <img class="credential-image" src="assets/serv5-flutter.png" alt="Serv5 Flutter intern training certificate" loading="lazy" width="1600" height="1120">
-              </a>
-              <div class="card-meta"><span class="card-badge" data-i18n="trainingBadge">Training</span><span class="card-date" data-i18n="serv5Date">Issued Jul 23, 2026</span></div>
-              <h4 class="card-title" data-i18n="serv5Title">Flutter Intern Training</h4>
-              <p class="card-org" data-i18n="serv5Org">Serv5 · Overall evaluation: Very Good</p>
-            </article>
-            <article class="credential-card">
-              <a class="credential-image-link" href="assets/data-science-ml.jpeg" target="_blank" rel="noopener" aria-label="Open Data Science and Machine Learning certificate">
-                <img class="credential-image" src="assets/data-science-ml.jpeg" alt="Data Science and Machine Learning certificate from Egyptian Banking Institute" loading="lazy" width="1080" height="720">
-              </a>
-              <div class="card-meta"><span class="card-badge verified" data-i18n="certBadge">Certificate</span><span class="card-date" data-i18n="dataScienceDate">Sep 14–25, 2025 · 80 hours</span></div>
-              <h4 class="card-title" data-i18n="dataScienceTitle">Data Science and Machine Learning (AI)</h4>
-              <p class="card-org" data-i18n="dataScienceOrg">Egyptian Banking Institute · Beit Al Zakat wa Al Sadaqat Al Masry</p>
-            </article>
-            <article class="credential-card">
-              <a class="credential-image-link" href="assets/huawei-hcia-ai.jpeg" target="_blank" rel="noopener" aria-label="Open Huawei HCIA-AI certificate">
-                <img class="credential-image" src="assets/huawei-hcia-ai.jpeg" alt="Huawei HCIA-AI course certificate" loading="lazy" width="1600" height="1120">
-              </a>
-              <div class="card-meta"><span class="card-badge verified" data-i18n="certBadge">Certificate</span><span class="card-date" data-i18n="huaweiDate">Jul 20–Aug 28, 2024</span></div>
-              <h4 class="card-title" data-i18n="huaweiTitle">Huawei HCIA-AI Course</h4>
-              <p class="card-org" data-i18n="huaweiOrg">Huawei · Faculty of Engineering, Mansoura University</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ==================== Contact Form (EmailJS) ==================== -->
     <section class="section" id="contact">
       <div class="section-head">
@@ -684,11 +652,6 @@
               <span class="contact-info-label">GitHub</span>
               <a class="contact-info-value contact-info-link" href="https://github.com/Ahmed-Elzaher" target="_blank" rel="noopener">Ahmed-Elzaher</a>
             </div>
-          </div>
-
-          <div class="contact-availability">
-            <span class="avail-dot" aria-hidden="true"></span>
-            Available for new opportunities
           </div>
         </div>
 

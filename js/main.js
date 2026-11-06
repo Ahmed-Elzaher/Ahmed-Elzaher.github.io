@@ -6,7 +6,7 @@ const EMAILJS_SERVICE_ID  = 'Elzaher_13';
 const EMAILJS_TEMPLATE_ID = 'template_yg7p8b6';
 const EMAILJS_PUBLIC_KEY  = 'qtQ29ESrVxpyX7ozh';
 
-// ==================== Preloader Signature Dismiss (3 Seconds duration, GPU & Memory Optimized) ====================
+// ==================== Preloader Signature Dismiss (GPU & Memory Optimized) ====================
 window.addEventListener('load', () => {
   // Initialize EmailJS
   if (window.emailjs) {
@@ -19,9 +19,9 @@ window.addEventListener('load', () => {
       preloader.classList.add('fade-out');
       setTimeout(() => {
         preloader.remove(); // Remove from DOM completely to release GPU layer and memory
-      }, 500);
+      }, 400);
     }
-  }, 3000);
+  }, 1100);
 });
 
 // Fallback safety timeout in case load event was already fired
@@ -31,9 +31,9 @@ setTimeout(() => {
     preloader.classList.add('fade-out');
     setTimeout(() => {
       preloader.remove();
-    }, 500);
+    }, 400);
   }
-}, 3800);
+}, 1500);
 
 // ==================== Filter Pills — Technical Arsenal ====================
 const pills = document.querySelectorAll('.filter-pills .pill');
@@ -462,10 +462,11 @@ function observeNavVisibility(nav) {
 function initScrollSpy(navLinks) {
   const targets = [
     { el: document.getElementById('about'), navSection: 'about' },
+    { el: document.getElementById('education'), navSection: 'education' },
     { el: document.getElementById('skills'), navSection: 'skills' },
+    { el: document.getElementById('experience'), navSection: 'experience' },
     { el: document.getElementById('interactive-phone'), navSection: 'projects' },
     { el: document.getElementById('projects'), navSection: 'projects' },
-    { el: document.getElementById('credentials'), navSection: 'credentials' },
     { el: document.getElementById('contact'), navSection: 'contact' },
   ].filter((t) => t.el !== null);
 
@@ -529,16 +530,16 @@ function initScrollReveal() {
   const revealTargets = [
     // Section headings
     { selector: '.section .section-head', stagger: false },
-    // Arsenal cards
+    // Education cards
+    { selector: '#education .credential-card', stagger: false },
+    // Skills cards
     { selector: '#arsenalGrid .arsenal-card', stagger: true },
-    // Feature cards
-    { selector: '.feature-cards .feature-card', stagger: true },
+    // Experience cards
+    { selector: '#experience .credential-card', stagger: true },
     // Stat cards
     { selector: '.stats-grid .stat-card', stagger: true },
     // Project cards
     { selector: '#projects .project-card', stagger: false },
-    // Credential cards
-    { selector: '.credentials-grid .credential-card', stagger: true },
     // Contact section cards
     { selector: '.contact-info-cards .contact-info-card', stagger: true },
     // Contact form
@@ -581,7 +582,9 @@ const I18N = {
   en: {
     langLabel: 'عربي',
     navAbout: 'About',
+    navEducation: 'Education',
     navSkills: 'Skills',
+    navExperience: 'Experience',
     navProjects: 'Projects',
     navCreds: 'Creds',
     navConnect: 'Connect',
@@ -605,7 +608,7 @@ const I18N = {
     feature2Desc:
       'Strict decoupling between Presentation, Domain, and Data layers with SOLID principles and Dependency Injection.',
     arsenalTitleSolid: 'TECHNICAL',
-    arsenalTitleOutline: 'ARSENAL',
+    arsenalTitleOutline: 'SKILLS',
     pillAll: 'ALL',
     pillMobile: 'MOBILE DEV',
     pillArch: 'ARCHITECTURE & STATE',
@@ -643,6 +646,15 @@ const I18N = {
     credsTitleSolid: 'EDUCATION &',
     credsTitleOutline: 'CREDENTIALS',
     credsSubtitle: 'Academic background and verified professional credentials.',
+    educationTitleSolid: 'ACADEMIC',
+    educationTitleOutline: 'EDUCATION',
+    educationSubtitle: 'Academic background and formal engineering foundation.',
+    expTitleSolid: 'WORK &',
+    expTitleOutline: 'EXPERIENCE',
+    expSubtitle: 'Professional internships, intensive training, and verified engineering credentials.',
+    internshipBadge: 'Internship & Training',
+    serv5Desc: 'Hands-on industrial Flutter development, state management, REST API integration, and clean code workflows.',
+    ntiDesc: 'Intensive mobile engineering program focused on cross-platform Flutter development and architectural patterns.',
     educationPanelTitle: 'Education',
     educationPanelSubtitle: 'Academic background',
     degreeBadge: "Bachelor's Degree",
@@ -689,7 +701,9 @@ const I18N = {
   ar: {
     langLabel: 'EN',
     navAbout: 'عني',
+    navEducation: 'التعليم',
     navSkills: 'المهارات',
+    navExperience: 'الخبرات',
     navProjects: 'المشاريع',
     navCreds: 'المؤهلات',
     navConnect: 'تواصل',
@@ -712,7 +726,7 @@ const I18N = {
     feature2Title: 'معمارية نظيفة وقابلية للتوسع',
     feature2Desc:
       'فصل دقيق بين طبقات Presentation و Domain و Data بالاعتماد على مبادئ SOLID وحقن التبعيات GetIt لضمان قابلية الفحص والتوسع.',
-    arsenalTitleSolid: 'الترسانة',
+    arsenalTitleSolid: 'المهارات',
     arsenalTitleOutline: 'التقنية',
     pillAll: 'الكل',
     pillMobile: 'تطوير الموبايل',
@@ -751,6 +765,15 @@ const I18N = {
     credsTitleSolid: 'التعليم و',
     credsTitleOutline: 'المؤهلات',
     credsSubtitle: 'المؤهل الأكاديمي والشهادات المهنية الموثقة.',
+    educationTitleSolid: 'التعليم',
+    educationTitleOutline: 'الأكاديمي',
+    educationSubtitle: 'الخلفية الأكاديمية والأساس الهندسي الجامعي.',
+    expTitleSolid: 'الخبرة و',
+    expTitleOutline: 'التدريب',
+    expSubtitle: 'التدريب العملي، البرامج التقنية المكثفة، والشهادات المعتمدة.',
+    internshipBadge: 'تدريب عملي وخبرة',
+    serv5Desc: 'تطوير تطبيقي عملي على فلاتر، وإدارة الحالة، وتكامل الـ APIs، وممارسات الكود النظيف.',
+    ntiDesc: 'برنامج مكثف لهندسة تطبيقات الموبايل بالتركيز على فلاتر ومعماريات التطبيقات الحديثة.',
     educationPanelTitle: 'التعليم',
     educationPanelSubtitle: 'المؤهل الأكاديمي',
     degreeBadge: 'درجة البكالوريوس',
